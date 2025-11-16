@@ -21,6 +21,9 @@ class RAG:
 
         pass
 
+    def evaluation(self):
+        pass
+
 if __name__=="__main__":
     RAG rag_cosine = RAG("cosine")
     RAG rag_euclidean = RAG("euclidean")
