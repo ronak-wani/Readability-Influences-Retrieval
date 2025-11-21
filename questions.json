@@ -1,0 +1,947 @@
+{
+    "WNL Shocking": {
+        "Ele-Q": "What is 'WNL Shocking' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Shocking'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Shocking'."
+    },
+    "Swedish prisons": {
+        "Ele-Q": "What is 'Swedish prisons' about?",
+        "Int-Q": "What is the main idea of the article 'Swedish prisons'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Swedish prisons'."
+    },
+    "WNL John Lewis": {
+        "Ele-Q": "What is 'WNL John Lewis' about?",
+        "Int-Q": "What is the main idea of the article 'WNL John Lewis'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL John Lewis'."
+    },
+    "Facebook deserted by millions of users": {
+        "Ele-Q": "What is 'Facebook deserted by millions of users' about?",
+        "Int-Q": "What is the main idea of the article 'Facebook deserted by millions of users'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Facebook deserted by millions of users'."
+    },
+    "WNL Ships noise": {
+        "Ele-Q": "What is 'WNL Ships noise' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Ships noise'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Ships noise'."
+    },
+    "WNL Six year olds": {
+        "Ele-Q": "What is 'WNL Six year olds' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Six year olds'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Six year olds'."
+    },
+    "WNL Satnav": {
+        "Ele-Q": "What is 'WNL Satnav' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Satnav'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Satnav'."
+    },
+    "Kate and William": {
+        "Ele-Q": "What is 'Kate and William' about?",
+        "Int-Q": "What is the main idea of the article 'Kate and William'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Kate and William'."
+    },
+    "WNL Canadian Pair": {
+        "Ele-Q": "What is 'WNL Canadian Pair' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Canadian Pair'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Canadian Pair'."
+    },
+    "Denmark": {
+        "Ele-Q": "What is 'Denmark' about?",
+        "Int-Q": "What is the main idea of the article 'Denmark'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Denmark'."
+    },
+    "WNL Icelandic names": {
+        "Ele-Q": "What is 'WNL Icelandic names' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Icelandic names'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Icelandic names'."
+    },
+    "WNL Extinction": {
+        "Ele-Q": "What is 'WNL Extinction' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Extinction'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Extinction'."
+    },
+    "WNL Will drones": {
+        "Ele-Q": "What is 'WNL Will drones' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Will drones'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Will drones'."
+    },
+    "WNL Kiruna": {
+        "Ele-Q": "What is 'WNL Kiruna' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Kiruna'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Kiruna'."
+    },
+    "Starbucks": {
+        "Ele-Q": "What is 'Starbucks' about?",
+        "Int-Q": "What is the main idea of the article 'Starbucks'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Starbucks'."
+    },
+    "WNL Kate Bush": {
+        "Ele-Q": "What is 'WNL Kate Bush' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Kate Bush'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Kate Bush'."
+    },
+    "WNL NASA Astronaut": {
+        "Ele-Q": "What is 'WNL NASA Astronaut' about?",
+        "Int-Q": "What is the main idea of the article 'WNL NASA Astronaut'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL NASA Astronaut'."
+    },
+    "WNL are you a bad boyfriend": {
+        "Ele-Q": "What is 'WNL are you a bad boyfriend' about?",
+        "Int-Q": "What is the main idea of the article 'WNL are you a bad boyfriend'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL are you a bad boyfriend'."
+    },
+    "WNL Bangladesh factory owners": {
+        "Ele-Q": "What is 'WNL Bangladesh factory owners' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Bangladesh factory owners'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Bangladesh factory owners'."
+    },
+    "Everest": {
+        "Ele-Q": "What is 'Everest' about?",
+        "Int-Q": "What is the main idea of the article 'Everest'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Everest'."
+    },
+    "WNL Ten ideas": {
+        "Ele-Q": "What is 'WNL Ten ideas' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Ten ideas'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Ten ideas'."
+    },
+    "WNL Icebucket challenge": {
+        "Ele-Q": "What is 'WNL Icebucket challenge' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Icebucket challenge'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Icebucket challenge'."
+    },
+    "WNL Scottish referendum": {
+        "Ele-Q": "What is 'WNL Scottish referendum' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Scottish referendum'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Scottish referendum'."
+    },
+    "WNL Cuba": {
+        "Ele-Q": "What is 'WNL Cuba' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Cuba'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Cuba'."
+    },
+    "WNL Glastonbury": {
+        "Ele-Q": "What is 'WNL Glastonbury' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Glastonbury'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Glastonbury'."
+    },
+    "WNL Billionaires": {
+        "Ele-Q": "What is 'WNL Billionaires' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Billionaires'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Billionaires'."
+    },
+    "WNL Young Americans": {
+        "Ele-Q": "What is 'WNL Young Americans' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Young Americans'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Young Americans'."
+    },
+    "WNL Planet": {
+        "Ele-Q": "What is 'WNL Planet' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Planet'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Planet'."
+    },
+    "WNL JMW Turner": {
+        "Ele-Q": "What is 'WNL JMW Turner' about?",
+        "Int-Q": "What is the main idea of the article 'WNL JMW Turner'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL JMW Turner'."
+    },
+    "WNL Fifth of young adults": {
+        "Ele-Q": "What is 'WNL Fifth of young adults' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Fifth of young adults'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Fifth of young adults'."
+    },
+    "Amazon": {
+        "Ele-Q": "What is 'Amazon' about?",
+        "Int-Q": "What is the main idea of the article 'Amazon'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Amazon'."
+    },
+    "Fitness": {
+        "Ele-Q": "What is 'Fitness' about?",
+        "Int-Q": "What is the main idea of the article 'Fitness'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Fitness'."
+    },
+    "WNL six well paid jobs": {
+        "Ele-Q": "What is 'WNL six well paid jobs' about?",
+        "Int-Q": "What is the main idea of the article 'WNL six well paid jobs'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL six well paid jobs'."
+    },
+    "WNL Shops": {
+        "Ele-Q": "What is 'WNL Shops' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Shops'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Shops'."
+    },
+    "WNL In flight": {
+        "Ele-Q": "What is 'WNL In flight' about?",
+        "Int-Q": "What is the main idea of the article 'WNL In flight'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL In flight'."
+    },
+    "Amsterdam": {
+        "Ele-Q": "What is 'Amsterdam' about?",
+        "Int-Q": "What is the main idea of the article 'Amsterdam'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Amsterdam'."
+    },
+    "Obama": {
+        "Ele-Q": "What is 'Obama' about?",
+        "Int-Q": "What is the main idea of the article 'Obama'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Obama'."
+    },
+    "Hillsborough": {
+        "Ele-Q": "What is 'Hillsborough' about?",
+        "Int-Q": "What is the main idea of the article 'Hillsborough'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Hillsborough'."
+    },
+    "WNL David Bowie": {
+        "Ele-Q": "What is 'WNL David Bowie' about?",
+        "Int-Q": "What is the main idea of the article 'WNL David Bowie'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL David Bowie'."
+    },
+    "NSA scandal": {
+        "Ele-Q": "What is 'NSA scandal' about?",
+        "Int-Q": "What is the main idea of the article 'NSA scandal'?",
+        "Adv-Q": "Explain the central argument presented in the article 'NSA scandal'."
+    },
+    "WNL What's the secret": {
+        "Ele-Q": "What is 'WNL What's the secret' about?",
+        "Int-Q": "What is the main idea of the article 'WNL What's the secret'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL What's the secret'."
+    },
+    "WNL Drowning in rubbish": {
+        "Ele-Q": "What is 'WNL Drowning in rubbish' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Drowning in rubbish'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Drowning in rubbish'."
+    },
+    "WNL The Greek island": {
+        "Ele-Q": "What is 'WNL The Greek island' about?",
+        "Int-Q": "What is the main idea of the article 'WNL The Greek island'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL The Greek island'."
+    },
+    "WNL Bogus Allergy": {
+        "Ele-Q": "What is 'WNL Bogus Allergy' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Bogus Allergy'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Bogus Allergy'."
+    },
+    "WNL The last": {
+        "Ele-Q": "What is 'WNL The last' about?",
+        "Int-Q": "What is the main idea of the article 'WNL The last'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL The last'."
+    },
+    "WNL Rwanda": {
+        "Ele-Q": "What is 'WNL Rwanda' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Rwanda'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Rwanda'."
+    },
+    "False memory": {
+        "Ele-Q": "What is 'False memory' about?",
+        "Int-Q": "What is the main idea of the article 'False memory'?",
+        "Adv-Q": "Explain the central argument presented in the article 'False memory'."
+    },
+    "Greeks and drugs": {
+        "Ele-Q": "What is 'Greeks and drugs' about?",
+        "Int-Q": "What is the main idea of the article 'Greeks and drugs'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Greeks and drugs'."
+    },
+    "Food shortages": {
+        "Ele-Q": "What is 'Food shortages' about?",
+        "Int-Q": "What is the main idea of the article 'Food shortages'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Food shortages'."
+    },
+    "WNL World Cup": {
+        "Ele-Q": "What is 'WNL World Cup' about?",
+        "Int-Q": "What is the main idea of the article 'WNL World Cup'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL World Cup'."
+    },
+    "WNL Still no flying cars": {
+        "Ele-Q": "What is 'WNL Still no flying cars' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Still no flying cars'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Still no flying cars'."
+    },
+    "WNL Japan": {
+        "Ele-Q": "What is 'WNL Japan' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Japan'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Japan'."
+    },
+    "WNL Swarthy caveman": {
+        "Ele-Q": "What is 'WNL Swarthy caveman' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Swarthy caveman'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Swarthy caveman'."
+    },
+    "WNL Spain Wetlands": {
+        "Ele-Q": "What is 'WNL Spain Wetlands' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Spain Wetlands'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Spain Wetlands'."
+    },
+    "Life expectancy": {
+        "Ele-Q": "What is 'Life expectancy' about?",
+        "Int-Q": "What is the main idea of the article 'Life expectancy'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Life expectancy'."
+    },
+    "climate change ": {
+        "Ele-Q": "What is 'climate change ' about?",
+        "Int-Q": "What is the main idea of the article 'climate change '?",
+        "Adv-Q": "Explain the central argument presented in the article 'climate change '."
+    },
+    "Gangs": {
+        "Ele-Q": "What is 'Gangs' about?",
+        "Int-Q": "What is the main idea of the article 'Gangs'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Gangs'."
+    },
+    "WNL Man falls": {
+        "Ele-Q": "What is 'WNL Man falls' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Man falls'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Man falls'."
+    },
+    "WNL Experience": {
+        "Ele-Q": "What is 'WNL Experience' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Experience'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Experience'."
+    },
+    "Meteorite": {
+        "Ele-Q": "What is 'Meteorite' about?",
+        "Int-Q": "What is the main idea of the article 'Meteorite'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Meteorite'."
+    },
+    "Liberia": {
+        "Ele-Q": "What is 'Liberia' about?",
+        "Int-Q": "What is the main idea of the article 'Liberia'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Liberia'."
+    },
+    "WNL Can the US": {
+        "Ele-Q": "What is 'WNL Can the US' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Can the US'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Can the US'."
+    },
+    "WNL India's rich": {
+        "Ele-Q": "What is 'WNL India's rich' about?",
+        "Int-Q": "What is the main idea of the article 'WNL India's rich'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL India's rich'."
+    },
+    "Loterry": {
+        "Ele-Q": "What is 'Loterry' about?",
+        "Int-Q": "What is the main idea of the article 'Loterry'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Loterry'."
+    },
+    "Norwegian sun": {
+        "Ele-Q": "What is 'Norwegian sun' about?",
+        "Int-Q": "What is the main idea of the article 'Norwegian sun'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Norwegian sun'."
+    },
+    "WNL Basic phone logs": {
+        "Ele-Q": "What is 'WNL Basic phone logs' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Basic phone logs'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Basic phone logs'."
+    },
+    "WNL Shakespeare": {
+        "Ele-Q": "What is 'WNL Shakespeare' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Shakespeare'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Shakespeare'."
+    },
+    "WNL Why are people so wrong": {
+        "Ele-Q": "What is 'WNL Why are people so wrong' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Why are people so wrong'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Why are people so wrong'."
+    },
+    "WNL Barack Obama": {
+        "Ele-Q": "What is 'WNL Barack Obama' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Barack Obama'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Barack Obama'."
+    },
+    "WNL Castaway": {
+        "Ele-Q": "What is 'WNL Castaway' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Castaway'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Castaway'."
+    },
+    "WNL Arctic Ramadan": {
+        "Ele-Q": "What is 'WNL Arctic Ramadan' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Arctic Ramadan'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Arctic Ramadan'."
+    },
+    "WNL Music": {
+        "Ele-Q": "What is 'WNL Music' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Music'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Music'."
+    },
+    "WNL FIFA": {
+        "Ele-Q": "What is 'WNL FIFA' about?",
+        "Int-Q": "What is the main idea of the article 'WNL FIFA'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL FIFA'."
+    },
+    "WNL Lego movie": {
+        "Ele-Q": "What is 'WNL Lego movie' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Lego movie'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Lego movie'."
+    },
+    "WNL Nigerian low tech": {
+        "Ele-Q": "What is 'WNL Nigerian low tech' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Nigerian low tech'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Nigerian low tech'."
+    },
+    "WNL What does Apple": {
+        "Ele-Q": "What is 'WNL What does Apple' about?",
+        "Int-Q": "What is the main idea of the article 'WNL What does Apple'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL What does Apple'."
+    },
+    "Kenya": {
+        "Ele-Q": "What is 'Kenya' about?",
+        "Int-Q": "What is the main idea of the article 'Kenya'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Kenya'."
+    },
+    "WNL Winter": {
+        "Ele-Q": "What is 'WNL Winter' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Winter'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Winter'."
+    },
+    "WNL Criminal Links": {
+        "Ele-Q": "What is 'WNL Criminal Links' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Criminal Links'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Criminal Links'."
+    },
+    "WNL Men in black": {
+        "Ele-Q": "What is 'WNL Men in black' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Men in black'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Men in black'."
+    },
+    "Lie detector": {
+        "Ele-Q": "What is 'Lie detector' about?",
+        "Int-Q": "What is the main idea of the article 'Lie detector'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Lie detector'."
+    },
+    "WNL shark": {
+        "Ele-Q": "What is 'WNL shark' about?",
+        "Int-Q": "What is the main idea of the article 'WNL shark'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL shark'."
+    },
+    "Syria": {
+        "Ele-Q": "What is 'Syria' about?",
+        "Int-Q": "What is the main idea of the article 'Syria'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Syria'."
+    },
+    "Japan": {
+        "Ele-Q": "What is 'Japan' about?",
+        "Int-Q": "What is the main idea of the article 'Japan'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Japan'."
+    },
+    "WNL SeaWorld": {
+        "Ele-Q": "What is 'WNL SeaWorld' about?",
+        "Int-Q": "What is the main idea of the article 'WNL SeaWorld'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL SeaWorld'."
+    },
+    "Exercise": {
+        "Ele-Q": "What is 'Exercise' about?",
+        "Int-Q": "What is the main idea of the article 'Exercise'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Exercise'."
+    },
+    "WNL On the trail": {
+        "Ele-Q": "What is 'WNL On the trail' about?",
+        "Int-Q": "What is the main idea of the article 'WNL On the trail'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL On the trail'."
+    },
+    "Malala": {
+        "Ele-Q": "What is 'Malala' about?",
+        "Int-Q": "What is the main idea of the article 'Malala'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Malala'."
+    },
+    "WNL Novel way": {
+        "Ele-Q": "What is 'WNL Novel way' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Novel way'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Novel way'."
+    },
+    "WNL Bangladeshi organization": {
+        "Ele-Q": "What is 'WNL Bangladeshi organization' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Bangladeshi organization'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Bangladeshi organization'."
+    },
+    "Coal to challenge oil": {
+        "Ele-Q": "What is 'Coal to challenge oil' about?",
+        "Int-Q": "What is the main idea of the article 'Coal to challenge oil'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Coal to challenge oil'."
+    },
+    "WNL The age of music": {
+        "Ele-Q": "What is 'WNL The age of music' about?",
+        "Int-Q": "What is the main idea of the article 'WNL The age of music'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL The age of music'."
+    },
+    "WNL Google boss": {
+        "Ele-Q": "What is 'WNL Google boss' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Google boss'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Google boss'."
+    },
+    "Royal Baby": {
+        "Ele-Q": "What is 'Royal Baby' about?",
+        "Int-Q": "What is the main idea of the article 'Royal Baby'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Royal Baby'."
+    },
+    "Spain": {
+        "Ele-Q": "What is 'Spain' about?",
+        "Int-Q": "What is the main idea of the article 'Spain'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Spain'."
+    },
+    "WNL Four new elements": {
+        "Ele-Q": "What is 'WNL Four new elements' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Four new elements'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Four new elements'."
+    },
+    "WNL Mystery Shopper": {
+        "Ele-Q": "What is 'WNL Mystery Shopper' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Mystery Shopper'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Mystery Shopper'."
+    },
+    "Arctic mapping": {
+        "Ele-Q": "What is 'Arctic mapping' about?",
+        "Int-Q": "What is the main idea of the article 'Arctic mapping'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Arctic mapping'."
+    },
+    "WNL The lightweight": {
+        "Ele-Q": "What is 'WNL The lightweight' about?",
+        "Int-Q": "What is the main idea of the article 'WNL The lightweight'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL The lightweight'."
+    },
+    "WNL Star Wars": {
+        "Ele-Q": "What is 'WNL Star Wars' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Star Wars'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Star Wars'."
+    },
+    "Teff": {
+        "Ele-Q": "What is 'Teff' about?",
+        "Int-Q": "What is the main idea of the article 'Teff'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Teff'."
+    },
+    "WNL Scientist": {
+        "Ele-Q": "What is 'WNL Scientist' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Scientist'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Scientist'."
+    },
+    "WNL Are MOOCs the future": {
+        "Ele-Q": "What is 'WNL Are MOOCs the future' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Are MOOCs the future'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Are MOOCs the future'."
+    },
+    "WNL Morocco": {
+        "Ele-Q": "What is 'WNL Morocco' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Morocco'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Morocco'."
+    },
+    "Zero Hours": {
+        "Ele-Q": "What is 'Zero Hours' about?",
+        "Int-Q": "What is the main idea of the article 'Zero Hours'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Zero Hours'."
+    },
+    "WNL Switched Babies": {
+        "Ele-Q": "What is 'WNL Switched Babies' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Switched Babies'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Switched Babies'."
+    },
+    "Organs": {
+        "Ele-Q": "What is 'Organs' about?",
+        "Int-Q": "What is the main idea of the article 'Organs'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Organs'."
+    },
+    "Bonus pay": {
+        "Ele-Q": "What is 'Bonus pay' about?",
+        "Int-Q": "What is the main idea of the article 'Bonus pay'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Bonus pay'."
+    },
+    "WNL Poverty": {
+        "Ele-Q": "What is 'WNL Poverty' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Poverty'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Poverty'."
+    },
+    "WNL Scarlett": {
+        "Ele-Q": "What is 'WNL Scarlett' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Scarlett'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Scarlett'."
+    },
+    "WNL Pizza chain": {
+        "Ele-Q": "What is 'WNL Pizza chain' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Pizza chain'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Pizza chain'."
+    },
+    "WNL David Mitchell": {
+        "Ele-Q": "What is 'WNL David Mitchell' about?",
+        "Int-Q": "What is the main idea of the article 'WNL David Mitchell'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL David Mitchell'."
+    },
+    "Japan menu": {
+        "Ele-Q": "What is 'Japan menu' about?",
+        "Int-Q": "What is the main idea of the article 'Japan menu'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Japan menu'."
+    },
+    "Crowdfunding": {
+        "Ele-Q": "What is 'Crowdfunding' about?",
+        "Int-Q": "What is the main idea of the article 'Crowdfunding'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Crowdfunding'."
+    },
+    "Rats": {
+        "Ele-Q": "What is 'Rats' about?",
+        "Int-Q": "What is the main idea of the article 'Rats'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Rats'."
+    },
+    "Richard III": {
+        "Ele-Q": "What is 'Richard III' about?",
+        "Int-Q": "What is the main idea of the article 'Richard III'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Richard III'."
+    },
+    "WNL School": {
+        "Ele-Q": "What is 'WNL School' about?",
+        "Int-Q": "What is the main idea of the article 'WNL School'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL School'."
+    },
+    "WNL Spain Robin Hood": {
+        "Ele-Q": "What is 'WNL Spain Robin Hood' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Spain Robin Hood'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Spain Robin Hood'."
+    },
+    "WNL Revolution": {
+        "Ele-Q": "What is 'WNL Revolution' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Revolution'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Revolution'."
+    },
+    "WNL Vienna": {
+        "Ele-Q": "What is 'WNL Vienna' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Vienna'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Vienna'."
+    },
+    "Pope": {
+        "Ele-Q": "What is 'Pope' about?",
+        "Int-Q": "What is the main idea of the article 'Pope'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Pope'."
+    },
+    "WNL Google car": {
+        "Ele-Q": "What is 'WNL Google car' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Google car'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Google car'."
+    },
+    "WNL New Orleans": {
+        "Ele-Q": "What is 'WNL New Orleans' about?",
+        "Int-Q": "What is the main idea of the article 'WNL New Orleans'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL New Orleans'."
+    },
+    "WNL First high resolution images": {
+        "Ele-Q": "What is 'WNL First high resolution images' about?",
+        "Int-Q": "What is the main idea of the article 'WNL First high resolution images'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL First high resolution images'."
+    },
+    "Billionaires": {
+        "Ele-Q": "What is 'Billionaires' about?",
+        "Int-Q": "What is the main idea of the article 'Billionaires'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Billionaires'."
+    },
+    "WNL Goodbye fish and chips": {
+        "Ele-Q": "What is 'WNL Goodbye fish and chips' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Goodbye fish and chips'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Goodbye fish and chips'."
+    },
+    "WNL Extreme heat": {
+        "Ele-Q": "What is 'WNL Extreme heat' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Extreme heat'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Extreme heat'."
+    },
+    "WNL Calais Migrants": {
+        "Ele-Q": "What is 'WNL Calais Migrants' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Calais Migrants'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Calais Migrants'."
+    },
+    "WNL Wealth therapy": {
+        "Ele-Q": "What is 'WNL Wealth therapy' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Wealth therapy'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Wealth therapy'."
+    },
+    "WNL How downtown Abbey": {
+        "Ele-Q": "What is 'WNL How downtown Abbey' about?",
+        "Int-Q": "What is the main idea of the article 'WNL How downtown Abbey'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL How downtown Abbey'."
+    },
+    "Gorillas and oil": {
+        "Ele-Q": "What is 'Gorillas and oil' about?",
+        "Int-Q": "What is the main idea of the article 'Gorillas and oil'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Gorillas and oil'."
+    },
+    "Life on Mars": {
+        "Ele-Q": "What is 'Life on Mars' about?",
+        "Int-Q": "What is the main idea of the article 'Life on Mars'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Life on Mars'."
+    },
+    "Cigarettes": {
+        "Ele-Q": "What is 'Cigarettes' about?",
+        "Int-Q": "What is the main idea of the article 'Cigarettes'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Cigarettes'."
+    },
+    "Banksy": {
+        "Ele-Q": "What is 'Banksy' about?",
+        "Int-Q": "What is the main idea of the article 'Banksy'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Banksy'."
+    },
+    "Bolivia": {
+        "Ele-Q": "What is 'Bolivia' about?",
+        "Int-Q": "What is the main idea of the article 'Bolivia'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Bolivia'."
+    },
+    "Anita": {
+        "Ele-Q": "What is 'Anita' about?",
+        "Int-Q": "What is the main idea of the article 'Anita'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Anita'."
+    },
+    "WNL Use of e-cig": {
+        "Ele-Q": "What is 'WNL Use of e-cig' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Use of e-cig'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Use of e-cig'."
+    },
+    "WNL Who invented": {
+        "Ele-Q": "What is 'WNL Who invented' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Who invented'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Who invented'."
+    },
+    "WNL Loneliness": {
+        "Ele-Q": "What is 'WNL Loneliness' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Loneliness'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Loneliness'."
+    },
+    "WNL Pacific Islanders": {
+        "Ele-Q": "What is 'WNL Pacific Islanders' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Pacific Islanders'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Pacific Islanders'."
+    },
+    "WNL What is world's": {
+        "Ele-Q": "What is 'WNL What is world's' about?",
+        "Int-Q": "What is the main idea of the article 'WNL What is world's'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL What is world's'."
+    },
+    "WNL Bright Future": {
+        "Ele-Q": "What is 'WNL Bright Future' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Bright Future'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Bright Future'."
+    },
+    "Midlife crisis": {
+        "Ele-Q": "What is 'Midlife crisis' about?",
+        "Int-Q": "What is the main idea of the article 'Midlife crisis'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Midlife crisis'."
+    },
+    "WNL Organic Food": {
+        "Ele-Q": "What is 'WNL Organic Food' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Organic Food'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Organic Food'."
+    },
+    "Superbugs": {
+        "Ele-Q": "What is 'Superbugs' about?",
+        "Int-Q": "What is the main idea of the article 'Superbugs'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Superbugs'."
+    },
+    "Ferguson": {
+        "Ele-Q": "What is 'Ferguson' about?",
+        "Int-Q": "What is the main idea of the article 'Ferguson'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Ferguson'."
+    },
+    "WNL Changing India": {
+        "Ele-Q": "What is 'WNL Changing India' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Changing India'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Changing India'."
+    },
+    "WNL Ways Facebook changed": {
+        "Ele-Q": "What is 'WNL Ways Facebook changed' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Ways Facebook changed'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Ways Facebook changed'."
+    },
+    "WNL Why you should start work at 10": {
+        "Ele-Q": "What is 'WNL Why you should start work at 10' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Why you should start work at 10'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Why you should start work at 10'."
+    },
+    "Copyright": {
+        "Ele-Q": "What is 'Copyright' about?",
+        "Int-Q": "What is the main idea of the article 'Copyright'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Copyright'."
+    },
+    "WNL Waiters": {
+        "Ele-Q": "What is 'WNL Waiters' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Waiters'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Waiters'."
+    },
+    "WNL Tributes": {
+        "Ele-Q": "What is 'WNL Tributes' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Tributes'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Tributes'."
+    },
+    "Insects": {
+        "Ele-Q": "What is 'Insects' about?",
+        "Int-Q": "What is the main idea of the article 'Insects'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Insects'."
+    },
+    "WNL Apple": {
+        "Ele-Q": "What is 'WNL Apple' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Apple'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Apple'."
+    },
+    "NSA 2": {
+        "Ele-Q": "What is 'NSA 2' about?",
+        "Int-Q": "What is the main idea of the article 'NSA 2'?",
+        "Adv-Q": "Explain the central argument presented in the article 'NSA 2'."
+    },
+    "Nelson Mandela": {
+        "Ele-Q": "What is 'Nelson Mandela' about?",
+        "Int-Q": "What is the main idea of the article 'Nelson Mandela'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Nelson Mandela'."
+    },
+    "WNL Inventions": {
+        "Ele-Q": "What is 'WNL Inventions' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Inventions'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Inventions'."
+    },
+    "WNL Black Friday": {
+        "Ele-Q": "What is 'WNL Black Friday' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Black Friday'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Black Friday'."
+    },
+    "Thatcher": {
+        "Ele-Q": "What is 'Thatcher' about?",
+        "Int-Q": "What is the main idea of the article 'Thatcher'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Thatcher'."
+    },
+    "WNL Five jobs": {
+        "Ele-Q": "What is 'WNL Five jobs' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Five jobs'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Five jobs'."
+    },
+    "WNL Making a killing": {
+        "Ele-Q": "What is 'WNL Making a killing' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Making a killing'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Making a killing'."
+    },
+    "Murderers beware": {
+        "Ele-Q": "What is 'Murderers beware' about?",
+        "Int-Q": "What is the main idea of the article 'Murderers beware'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Murderers beware'."
+    },
+    "Blackberry": {
+        "Ele-Q": "What is 'Blackberry' about?",
+        "Int-Q": "What is the main idea of the article 'Blackberry'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Blackberry'."
+    },
+    "Old age": {
+        "Ele-Q": "What is 'Old age' about?",
+        "Int-Q": "What is the main idea of the article 'Old age'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Old age'."
+    },
+    "Skydiver": {
+        "Ele-Q": "What is 'Skydiver' about?",
+        "Int-Q": "What is the main idea of the article 'Skydiver'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Skydiver'."
+    },
+    "US shutdown": {
+        "Ele-Q": "What is 'US shutdown' about?",
+        "Int-Q": "What is the main idea of the article 'US shutdown'?",
+        "Adv-Q": "Explain the central argument presented in the article 'US shutdown'."
+    },
+    "WNL Coloring Books": {
+        "Ele-Q": "What is 'WNL Coloring Books' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Coloring Books'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Coloring Books'."
+    },
+    "WNL 101 year old bottle message": {
+        "Ele-Q": "What is 'WNL 101 year old bottle message' about?",
+        "Int-Q": "What is the main idea of the article 'WNL 101 year old bottle message'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL 101 year old bottle message'."
+    },
+    "Kashmir": {
+        "Ele-Q": "What is 'Kashmir' about?",
+        "Int-Q": "What is the main idea of the article 'Kashmir'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Kashmir'."
+    },
+    "WNL Inky the octopus": {
+        "Ele-Q": "What is 'WNL Inky the octopus' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Inky the octopus'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Inky the octopus'."
+    },
+    "WNL Noise pollution ": {
+        "Ele-Q": "What is 'WNL Noise pollution ' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Noise pollution '?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Noise pollution '."
+    },
+    "WNL Mirrors": {
+        "Ele-Q": "What is 'WNL Mirrors' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Mirrors'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Mirrors'."
+    },
+    "WNL EU Pollution": {
+        "Ele-Q": "What is 'WNL EU Pollution' about?",
+        "Int-Q": "What is the main idea of the article 'WNL EU Pollution'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL EU Pollution'."
+    },
+    "WNL I confused my numbers": {
+        "Ele-Q": "What is 'WNL I confused my numbers' about?",
+        "Int-Q": "What is the main idea of the article 'WNL I confused my numbers'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL I confused my numbers'."
+    },
+    "Brazil": {
+        "Ele-Q": "What is 'Brazil' about?",
+        "Int-Q": "What is the main idea of the article 'Brazil'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Brazil'."
+    },
+    "WNL School Sports": {
+        "Ele-Q": "What is 'WNL School Sports' about?",
+        "Int-Q": "What is the main idea of the article 'WNL School Sports'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL School Sports'."
+    },
+    "WNL First female coach": {
+        "Ele-Q": "What is 'WNL First female coach' about?",
+        "Int-Q": "What is the main idea of the article 'WNL First female coach'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL First female coach'."
+    },
+    "WNL A good night sleep": {
+        "Ele-Q": "What is 'WNL A good night sleep' about?",
+        "Int-Q": "What is the main idea of the article 'WNL A good night sleep'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL A good night sleep'."
+    },
+    "WNL Who can stop Trump": {
+        "Ele-Q": "What is 'WNL Who can stop Trump' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Who can stop Trump'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Who can stop Trump'."
+    },
+    "WNL Love hormonw": {
+        "Ele-Q": "What is 'WNL Love hormonw' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Love hormonw'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Love hormonw'."
+    },
+    "WNL Mars": {
+        "Ele-Q": "What is 'WNL Mars' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Mars'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Mars'."
+    },
+    "WNL The millenials": {
+        "Ele-Q": "What is 'WNL The millenials' about?",
+        "Int-Q": "What is the main idea of the article 'WNL The millenials'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL The millenials'."
+    },
+    "Violence": {
+        "Ele-Q": "What is 'Violence' about?",
+        "Int-Q": "What is the main idea of the article 'Violence'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Violence'."
+    },
+    "WNL We must": {
+        "Ele-Q": "What is 'WNL We must' about?",
+        "Int-Q": "What is the main idea of the article 'WNL We must'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL We must'."
+    },
+    "WNL Neuroscientists": {
+        "Ele-Q": "What is 'WNL Neuroscientists' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Neuroscientists'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Neuroscientists'."
+    },
+    "WNL Brown bears": {
+        "Ele-Q": "What is 'WNL Brown bears' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Brown bears'?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Brown bears'."
+    },
+    "WNL Why we should ": {
+        "Ele-Q": "What is 'WNL Why we should ' about?",
+        "Int-Q": "What is the main idea of the article 'WNL Why we should '?",
+        "Adv-Q": "Explain the central argument presented in the article 'WNL Why we should '."
+    },
+    "Prince Harry": {
+        "Ele-Q": "What is 'Prince Harry' about?",
+        "Int-Q": "What is the main idea of the article 'Prince Harry'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Prince Harry'."
+    },
+    "Nepal": {
+        "Ele-Q": "What is 'Nepal' about?",
+        "Int-Q": "What is the main idea of the article 'Nepal'?",
+        "Adv-Q": "Explain the central argument presented in the article 'Nepal'."
+    }
+}
