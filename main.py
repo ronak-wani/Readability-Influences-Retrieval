@@ -58,6 +58,7 @@ class RAG:
 if __name__=="__main__":
     rag_cosine = RAG("cosine")
     docs, ids = rag_cosine.data_loader()
-    rag_cosine.vectordb(docs)
+    rag_cosine.vectordb(docs, ids)
+    rag_cosine.semantic_search()
     rag_euclidean = RAG("euclidean")
     rag_dot_product = RAG("dot_product")
