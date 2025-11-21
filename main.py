@@ -1,5 +1,4 @@
-from unittest import case
-
+import json
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import JSONLoader
 from langchain_ollama import OllamaEmbeddings
@@ -10,6 +9,7 @@ class RAG:
         type = self.type
 
     def data_loader(self):
+        ids=[]
         loader = JSONLoader(
             file_path="./combined_passages.json",
             jq_schema='to_entries[] | {title: .key, level: "Adv", text: .value["Adv-Txt"]} , '
@@ -19,16 +19,25 @@ class RAG:
         )
         docs = loader.load()
         # print(docs[0])
-        return docs
+        for i in range(len(docs)):
+            data = json.loads(docs[i].page_content)
+            title = data.get("title")
+            level = data.get("level")
+            # print("Title:", title)
+            # print("Level:", level)
+            id = title + "-" + level
+            # print(id)
+            ids.append(id)
+        return docs, ids
 
-    def vectordb(self, docs):
+    def vectordb(self, docs, ids):
         vectorstore = Chroma(
-            # documents=docs,
             collection_name="readability-rag",
-            # embedding=OllamaEmbeddings(model='nomic-embed-text'),
+            embedding_function=OllamaEmbeddings(model='nomic-embed-text'),
             persist_directory="./chroma_db",
         )
-        # vectorstore.persist()
+        vectorstore.add_documents(documents=docs, ids=ids)
+
 
     def semantic_search(self):
         match type:
@@ -48,7 +57,7 @@ class RAG:
 
 if __name__=="__main__":
     rag_cosine = RAG("cosine")
-    docs = rag_cosine.data_loader()
+    docs, ids = rag_cosine.data_loader()
     rag_cosine.vectordb(docs)
     rag_euclidean = RAG("euclidean")
     rag_dot_product = RAG("dot_product")
