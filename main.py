@@ -1,12 +1,22 @@
+from langchain_chroma import Chroma
+from langchain_ollama import OllamaEmbeddings
+
 class RAG:
     def __init__(self, type):
         type = self.type
 
     def data_loader(self):
+
         pass
 
     def vectordb(self):
-        pass
+        vectorstore = Chroma(
+            # documents=documents,
+            collection_name="readability-rag",
+            embedding=OllamaEmbeddings(model='nomic-embed-text', show_progress=True),
+            persist_directory="./chroma_db",
+        )
+        vectorstore.persist()
 
     def semantic_search(self):
         match type:
