@@ -15,14 +15,20 @@ class RAG:
             jq_schema='to_entries[] | {title: .key, level: "Adv", text: .value["Adv-Txt"]} , '
                       '{title: .key, level: "Int", text: .value["Int-Txt"]} , '
                       '{title: .key, level: "Ele", text: .value["Ele-Txt"]}',
-            text_content=False,
+            content_key="text",
+            metadata_func=lambda record, metadata: {
+                "title": record["title"],
+                "level": record["level"]
+            },
+            text_content=True,
         )
         docs = loader.load()
-        # print(docs[0])
+        print(docs[0])
+        # print(docs[0].page_content)
         for i in range(len(docs)):
-            data = json.loads(docs[i].page_content)
-            title = data.get("title")
-            level = data.get("level")
+            # data = json.loads(docs[i].metadata)
+            title = docs[i].metadata.get("title")
+            level = docs[i].metadata.get("level")
             # print("Title:", title)
             # print("Level:", level)
             id = title + "-" + level
@@ -40,6 +46,8 @@ class RAG:
 
 
     def semantic_search(self):
+        docs, ids = rag_cosine.data_loader()
+        rag_cosine.vectordb(docs, ids)
         match type:
             case "cosine":
                 pass
@@ -57,8 +65,6 @@ class RAG:
 
 if __name__=="__main__":
     rag_cosine = RAG("cosine")
-    docs, ids = rag_cosine.data_loader()
-    rag_cosine.vectordb(docs, ids)
     rag_cosine.semantic_search()
     rag_euclidean = RAG("euclidean")
     rag_dot_product = RAG("dot_product")
