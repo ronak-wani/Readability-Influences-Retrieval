@@ -1,4 +1,5 @@
 import json
+from tqdm import tqdm
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import JSONLoader
 from langchain_ollama import OllamaEmbeddings
@@ -39,10 +40,19 @@ class RAG:
     def vectordb(self, docs, ids):
         vectorstore = Chroma(
             collection_name="readability-rag",
-            embedding_function=OllamaEmbeddings(model='nomic-embed-text'),
+            embedding_function=OllamaEmbeddings(model='snowflake-arctic-embed', base_url="http://localhost:11434"),
             persist_directory="./chroma_db",
         )
-        vectorstore.add_documents(documents=docs, ids=ids)
+        print(f"Adding {len(docs)} documents to vector store...")
+
+        batch_size = 2
+        counter = 0
+        for i in tqdm(range(0, len(docs), batch_size), desc="Adding documents"):
+            batch_docs = docs[i:i + batch_size]
+            batch_ids = ids[i:i + batch_size]
+            vectorstore.add_documents(documents=batch_docs, ids=batch_ids)
+            ++counter
+            print(f"Batch {counter} of {len(docs)} added to vector store")
 
 
     def semantic_search(self):
