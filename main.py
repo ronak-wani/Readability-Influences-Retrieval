@@ -9,9 +9,10 @@ from langchain_ollama import OllamaEmbeddings
 
 class RAG:
     type = None
+    llm = None
     def __init__(self, type, llm):
-        type = self.type
-        llm = self.type
+        self.type = type
+        self.llm = llm
 
     def data_loader(self):
         ids=[]
@@ -55,9 +56,14 @@ class RAG:
             batch_ids = ids[i:i + batch_size]
             vectorstore.add_documents(documents=batch_docs, ids=batch_ids)
 
+        retriever = vectorstore.as_retriever()
+        return retriever
+
     def semantic_search(self):
         docs, ids = rag_cosine.data_loader()
-        rag_cosine.vectordb(docs, ids)
+        retriever = rag_cosine.vectordb(docs, ids)
+        rag_cosine.rag_chain(question, retriever)
+        rag_cosine.evaluation()
         match type:
             case "cosine":
                 pass
@@ -70,7 +76,7 @@ class RAG:
 
         pass
 
-    def rag_chain(question, retriever):
+    def rag_chain(self,question, retriever):
         print("\n########\nAfter RAG\n")
         prompt = """Answer the question based only on the provided context:
         {context}
@@ -80,7 +86,7 @@ class RAG:
         after_rag_chain = (
                 {"context": retriever, "question": RunnablePassthrough()}
                 | after_rag_prompt
-                | llm
+                | self.llm
                 | StrOutputParser()
         )
         response = after_rag_chain.invoke({"question": question})
@@ -92,5 +98,5 @@ class RAG:
 if __name__=="__main__":
     rag_cosine = RAG("cosine", "phi4")
     rag_cosine.semantic_search()
-    rag_euclidean = RAG("euclidean")
-    rag_dot_product = RAG("dot_product")
+    rag_euclidean = RAG("euclidean", "phi4")
+    rag_dot_product = RAG("dot_product", "phi4")
