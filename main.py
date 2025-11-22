@@ -46,14 +46,10 @@ class RAG:
         print(f"Adding {len(docs)} documents to vector store...")
 
         batch_size = 2
-        counter = 0
         for i in tqdm(range(0, len(docs), batch_size), desc="Adding documents"):
             batch_docs = docs[i:i + batch_size]
             batch_ids = ids[i:i + batch_size]
             vectorstore.add_documents(documents=batch_docs, ids=batch_ids)
-            ++counter
-            print(f"Batch {counter} of {len(docs)} added to vector store")
-
 
     def semantic_search(self):
         docs, ids = rag_cosine.data_loader()
