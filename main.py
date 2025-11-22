@@ -1,4 +1,7 @@
 import json
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnablePassthrough
 from tqdm import tqdm
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import JSONLoader
@@ -6,8 +9,9 @@ from langchain_ollama import OllamaEmbeddings
 
 class RAG:
     type = None
-    def __init__(self, type):
+    def __init__(self, type, llm):
         type = self.type
+        llm = self.type
 
     def data_loader(self):
         ids=[]
@@ -66,11 +70,27 @@ class RAG:
 
         pass
 
+    def rag_chain(question, retriever):
+        print("\n########\nAfter RAG\n")
+        prompt = """Answer the question based only on the provided context:
+        {context}
+        Question: {question}
+        """
+        after_rag_prompt = ChatPromptTemplate.from_template(prompt)
+        after_rag_chain = (
+                {"context": retriever, "question": RunnablePassthrough()}
+                | after_rag_prompt
+                | llm
+                | StrOutputParser()
+        )
+        response = after_rag_chain.invoke({"question": question})
+        return {"response": response}
+
     def evaluation(self):
         pass
 
 if __name__=="__main__":
-    rag_cosine = RAG("cosine")
+    rag_cosine = RAG("cosine", "phi4")
     rag_cosine.semantic_search()
     rag_euclidean = RAG("euclidean")
     rag_dot_product = RAG("dot_product")
