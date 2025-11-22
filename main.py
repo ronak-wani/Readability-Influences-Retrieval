@@ -32,7 +32,6 @@ class RAG:
         print(docs[0])
         # print(docs[0].page_content)
         for i in range(len(docs)):
-            # data = json.loads(docs[i].metadata)
             title = docs[i].metadata.get("title")
             level = docs[i].metadata.get("level")
             # print("Title:", title)
@@ -48,13 +47,20 @@ class RAG:
             embedding_function=OllamaEmbeddings(model='snowflake-arctic-embed', base_url="http://localhost:11434"),
             persist_directory="./chroma_db",
         )
-        print(f"Adding {len(docs)} documents to vector store...")
+        existing_doc_count = vectorstore._collection.count()
 
-        batch_size = 2
-        for i in tqdm(range(0, len(docs), batch_size), desc="Adding documents"):
-            batch_docs = docs[i:i + batch_size]
-            batch_ids = ids[i:i + batch_size]
-            vectorstore.add_documents(documents=batch_docs, ids=batch_ids)
+        if existing_doc_count > 0:
+            print(f"ChromaDB already has {existing_doc_count} documents.")
+            print("➡️ Skipping embedding step and using existing vectorDB.")
+
+        else:
+            print(f"Adding {len(docs)} documents to vector store...")
+
+            batch_size = 2
+            for i in tqdm(range(0, len(docs), batch_size), desc="Adding documents"):
+                batch_docs = docs[i:i + batch_size]
+                batch_ids = ids[i:i + batch_size]
+                vectorstore.add_documents(documents=batch_docs, ids=batch_ids)
 
         retriever = vectorstore.as_retriever()
         return retriever
@@ -62,7 +68,7 @@ class RAG:
     def semantic_search(self):
         docs, ids = rag_cosine.data_loader()
         retriever = rag_cosine.vectordb(docs, ids)
-        rag_cosine.rag_chain(question, retriever)
+        rag_cosine.rag_chain("./questions.json", retriever)
         rag_cosine.evaluation()
         match type:
             case "cosine":
@@ -76,21 +82,32 @@ class RAG:
 
         pass
 
-    def rag_chain(self,question, retriever):
-        print("\n########\nAfter RAG\n")
+    def rag_chain(self, questions_file_path, retriever):
+        responses = []
         prompt = """Answer the question based only on the provided context:
         {context}
         Question: {question}
         """
+
         after_rag_prompt = ChatPromptTemplate.from_template(prompt)
-        after_rag_chain = (
-                {"context": retriever, "question": RunnablePassthrough()}
-                | after_rag_prompt
-                | self.llm
-                | StrOutputParser()
-        )
-        response = after_rag_chain.invoke({"question": question})
-        return {"response": response}
+
+        with open(questions_file_path, "r") as file:
+            data = json.load(file)
+
+        for topic, questions in data.items():
+            for q_type, question in questions.items():
+                print(f" {question}")
+            print()
+
+            after_rag_chain = (
+                    {"context": retriever, "question": RunnablePassthrough()}
+                    | after_rag_prompt
+                    | self.llm
+                    | StrOutputParser()
+            )
+            response = after_rag_chain.invoke({"question": question})
+            responses.append(response)
+            return responses
 
     def evaluation(self):
         pass
