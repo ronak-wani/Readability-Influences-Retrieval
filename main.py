@@ -102,14 +102,15 @@ class RAG:
                 print(f"Question: {question}")
             print()
 
-            after_rag_chain = (
-                    {"context": self.retriever, "question": RunnablePassthrough()}
-                    | rag_prompt
-                    | self.llm
-                    | StrOutputParser()
-            )
-            response = after_rag_chain.invoke({"question": question})
-            responses.append(response)
+            # after_rag_chain = (
+            #         {"context": self.retriever, "question": RunnablePassthrough()}
+            #         | rag_prompt
+            #         | self.llm
+            #         | StrOutputParser()
+            # )
+            # response = after_rag_chain.invoke({"question": question})
+
+            # responses.append(response)
             return responses
 
     def evaluation(self):
