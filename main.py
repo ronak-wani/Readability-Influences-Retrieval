@@ -10,9 +10,14 @@ from langchain_ollama import OllamaEmbeddings
 class RAG:
     type = None
     llm = None
+    docs = []
+    ids = []
     def __init__(self, type, llm):
         self.type = type
         self.llm = llm
+        self.docs, self.ids = self.data_loader()
+        retriever = self.vectordb()
+        self.semantic_search()
 
     def data_loader(self):
         ids=[]
@@ -41,7 +46,7 @@ class RAG:
             ids.append(id)
         return docs, ids
 
-    def vectordb(self, docs, ids):
+    def vectordb(self):
         vectorstore = Chroma(
             collection_name="readability-rag",
             embedding_function=OllamaEmbeddings(model='snowflake-arctic-embed', base_url="http://localhost:11434"),
@@ -51,24 +56,22 @@ class RAG:
 
         if existing_doc_count > 0:
             print(f"ChromaDB already has {existing_doc_count} documents.")
-            print("➡️ Skipping embedding step and using existing vectorDB.")
+            print("Skipping embedding step and using existing vectorDB.")
 
         else:
-            print(f"Adding {len(docs)} documents to vector store...")
+            print(f"Adding {len(self.docs)} documents to vector store...")
 
             batch_size = 2
-            for i in tqdm(range(0, len(docs), batch_size), desc="Adding documents"):
-                batch_docs = docs[i:i + batch_size]
-                batch_ids = ids[i:i + batch_size]
+            for i in tqdm(range(0, len(self.docs), batch_size), desc="Adding documents"):
+                batch_docs = self.docs[i:i + batch_size]
+                batch_ids = self.ids[i:i + batch_size]
                 vectorstore.add_documents(documents=batch_docs, ids=batch_ids)
 
         retriever = vectorstore.as_retriever()
         return retriever
 
     def semantic_search(self):
-        docs, ids = rag_cosine.data_loader()
-        retriever = rag_cosine.vectordb(docs, ids)
-        rag_cosine.rag_chain("./questions.json", retriever)
+        # rag_cosine.rag_chain("./questions.json", retriever)
         rag_cosine.evaluation()
         match type:
             case "cosine":
