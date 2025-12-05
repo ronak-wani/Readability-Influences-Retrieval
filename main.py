@@ -16,8 +16,9 @@ class RAG:
         self.type = type
         self.llm = llm
         self.docs, self.ids = self.data_loader()
-        retriever = self.vectordb()
+        self.retriever = self.vectordb()
         self.semantic_search()
+        self.rag_chain("./questions.json")
 
     def data_loader(self):
         ids=[]
@@ -71,7 +72,6 @@ class RAG:
         return retriever
 
     def semantic_search(self):
-        # rag_cosine.rag_chain("./questions.json", retriever)
         rag_cosine.evaluation()
         match type:
             case "cosine":
@@ -85,7 +85,7 @@ class RAG:
 
         pass
 
-    def rag_chain(self, questions_file_path, retriever):
+    def rag_chain(self, questions_file_path):
         responses = []
         prompt = """Answer the question based only on the provided context:
         {context}
@@ -103,7 +103,7 @@ class RAG:
             print()
 
             after_rag_chain = (
-                    {"context": retriever, "question": RunnablePassthrough()}
+                    {"context": self.retriever, "question": RunnablePassthrough()}
                     | after_rag_prompt
                     | self.llm
                     | StrOutputParser()
