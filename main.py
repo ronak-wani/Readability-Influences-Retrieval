@@ -19,6 +19,7 @@ class RAG:
         self.retriever = self.vectordb()
         self.semantic_search()
         self.rag_chain("./questions.json")
+        # self.results = self.evaluation()
 
     def data_loader(self):
         ids=[]
@@ -35,7 +36,7 @@ class RAG:
             text_content=True,
         )
         docs = loader.load()
-        print(docs[0])
+        # print(docs[0])
         # print(docs[0].page_content)
         for i in range(len(docs)):
             title = docs[i].metadata.get("title")
@@ -72,7 +73,6 @@ class RAG:
         return retriever
 
     def semantic_search(self):
-        rag_cosine.evaluation()
         match type:
             case "cosine":
                 pass
@@ -92,19 +92,19 @@ class RAG:
         Question: {question}
         """
 
-        after_rag_prompt = ChatPromptTemplate.from_template(prompt)
+        rag_prompt = ChatPromptTemplate.from_template(prompt)
 
         with open(questions_file_path, "r") as file:
             data = json.load(file)
 
         for topic, questions in data.items():
             for q_type, question in questions.items():
-                print(f" {question}")
+                print(f"Question: {question}")
             print()
 
             after_rag_chain = (
                     {"context": self.retriever, "question": RunnablePassthrough()}
-                    | after_rag_prompt
+                    | rag_prompt
                     | self.llm
                     | StrOutputParser()
             )
@@ -117,6 +117,5 @@ class RAG:
 
 if __name__=="__main__":
     rag_cosine = RAG("cosine", "phi4")
-    rag_cosine.semantic_search()
     rag_euclidean = RAG("euclidean", "phi4")
     rag_dot_product = RAG("dot_product", "phi4")
