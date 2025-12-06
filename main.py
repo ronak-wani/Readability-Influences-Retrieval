@@ -53,6 +53,7 @@ class RAG:
             collection_name="readability-rag",
             embedding_function=OllamaEmbeddings(model='snowflake-arctic-embed', base_url="http://localhost:11434"),
             persist_directory="./chroma_db",
+
         )
         existing_doc_count = vectorstore._collection.count()
 
@@ -100,6 +101,9 @@ class RAG:
         for topic, questions in data.items():
             for q_type, question in questions.items():
                 print(f"Question: {question}")
+                response = self.retriever.invoke(f"{question}")
+                print(f"Response: {response}")
+
             print()
 
             # after_rag_chain = (
