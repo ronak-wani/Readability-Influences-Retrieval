@@ -22,12 +22,12 @@ class RAG:
     results = None
     relevant_count_list = [0] * 3  # ["Ele", "Int", "Adv"]
     total_count_list = [0] * 3
-    precision_list = []
-    recall_list = []
 
     def __init__(self, type, llm):
         self.type = type
         self.llm = llm
+        self.precision_list = [0] * 3
+        self.recall_list = [0] * 3
         self.docs, self.ids = self.data_loader()
         self.retriever = self.vectordb()
         self.bm25 = BM25Retriever.from_documents(self.docs)
@@ -169,7 +169,7 @@ class RAG:
                         retrieved_docs = [(d, 0.0) for d in docs]
 
                     elif self.type == "tfidf":
-                        docs = self.bm25.invoke(question)[:3]
+                        docs = self.tfidf.invoke(question)[:3]
                         retrieved_docs = [(d, 0.0) for d in docs]
 
                     else:
@@ -178,7 +178,9 @@ class RAG:
                             a = query_vector
                             b = embeddings
                             a_norm = a / (np.linalg.norm(a))
+                            print(f"a_norm : {a_norm}")
                             b_norm = b / (np.linalg.norm(b, axis=1, keepdims=True))
+                            print(f"b_norm : {b_norm}")
                             similarities = np.dot(b_norm, a_norm)
                             order = np.argsort(-similarities)[:3]
                             retrieved_docs = [(self.docs[int(i)], float(similarities[i])) for i in order]
@@ -220,14 +222,17 @@ class RAG:
                     for document in top_k_docs:
                         if document.get("title") == title:
                             num_relevant_retrieved += 1
+                            print(f"Inside Loop {num_relevant_retrieved}")
+
+                    print(f"Outside Loop {num_relevant_retrieved}")
 
                     precision = num_relevant_retrieved / 3
 
-                    if query_level == "Ele":
+                    if query_level == "Ele-Q":
                         self.precision_list[0] += precision
-                    if query_level == "Int":
+                    if query_level == "Int-Q":
                         self.precision_list[1] += precision
-                    if query_level == "Adv":
+                    if query_level == "Adv-Q":
                         self.precision_list[2] += precision
 
                     recall = num_relevant_retrieved / 3
@@ -260,12 +265,12 @@ class RAG:
                     "model": self.llm,
                     "metric": self.type,
                     "k": 3,
-                    "Precision @ Ele": self.precision_list[0],
-                    "Precision @ Int": self.precision_list[1],
-                    "Precision @ Adv": self.precision_list[2],
-                    "Recall @ Ele": self.precision_list[0],
-                    "Recall @ Int": self.precision_list[1],
-                    "Recall @ Adv": self.precision_list[2],
+                    "Precision @ Ele": f"{(self.precision_list[0]/189):.2f}",
+                    "Precision @ Int": f"{(self.precision_list[1]/189):.2f}",
+                    "Precision @ Adv": f"{(self.precision_list[2]/189):.2f}",
+                    "Recall @ Ele": f"{(self.precision_list[0]/189):.2f}",
+                    "Recall @ Int": f"{(self.precision_list[1]/189):.2f}",
+                    "Recall @ Adv": f"{(self.precision_list[2]/189):.2f}",
                 },
                 "results": results,
             }
