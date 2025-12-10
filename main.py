@@ -222,7 +222,7 @@ class RAG:
                                 self.Int_Q_list[1][rank] += 1
                             elif document.metadata.get("level") == "Int" and document.metadata.get("title") == title:
                                 self.Int_Q_list[2][rank] += 1
-                        elif query_level == "Int-Q":
+                        elif query_level == "Adv-Q":
                             if document.metadata.get("level") == "Ele" and document.metadata.get("title") == title:
                                 self.Adv_Q_list[0][rank] += 1
                             elif document.metadata.get("level") == "Int" and document.metadata.get("title") == title:
