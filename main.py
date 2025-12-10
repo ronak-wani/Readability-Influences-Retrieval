@@ -6,6 +6,7 @@ from langchain_chroma import Chroma
 from langchain_community.document_loaders import JSONLoader
 from langchain_ollama import OllamaEmbeddings
 from langchain_community.retrievers import BM25Retriever, TFIDFRetriever
+import os
 
 TOP_K = 3
 
@@ -19,7 +20,10 @@ class RAG:
     tfidf = None
     search = None
     results = None
-    count_list = [0] * 3
+    relevant_count_list = [0] * 3  # ["Ele", "Int", "Adv"]
+    total_count_list = [0] * 3
+    precision_list = []
+    recall_list = []
 
     def __init__(self, type, llm):
         self.type = type
@@ -30,8 +34,20 @@ class RAG:
         self.bm25.k = TOP_K
         self.tfidf = TFIDFRetriever.from_documents(self.docs)
         self.tfidf.k = TOP_K
+        self.folder_name = self.create_output_folder()
         self.semantic_search()
         self.results = self.evaluation()
+
+    def create_output_folder(self):
+        folder_name = f"{self.llm}"
+
+        if not os.path.exists(folder_name):
+            os.makedirs(folder_name)
+            print(f"Created output folder: {folder_name}")
+        else:
+            print(f"Output folder already exists: {folder_name}")
+
+        return folder_name
 
     def data_loader(self):
         ids=[]
@@ -183,7 +199,21 @@ class RAG:
                                 "level": document.metadata.get("level"),
                                 "score": score,
                             })
-                        
+                        if document.metadata.get("level") == "Ele":
+                            if document.metadata.get("title") == title:
+                                self.relevant_count_list[0] += rank+1
+                            else:
+                                self.irrelevant_count_list[2] +=1
+                        elif document.metadata.get("level") == "Int":
+                            if document.metadata.get("title") == title:
+                                self.relevant_count_list[1] += rank+1
+                            else:
+                                self.irrelevant_count_list[2] +=1
+                        elif document.metadata.get("level") == "Adv":
+                            if document.metadata.get("title") == title:
+                                self.relevant_count_list[2] += rank+1
+                            else:
+                                self.irrelevant_count_list[2] +=1
 
                     num_relevant_retrieved = 0
                         
@@ -192,7 +222,14 @@ class RAG:
                             num_relevant_retrieved += 1
 
                     precision = num_relevant_retrieved / 3
-                
+
+                    if query_level == "Ele":
+                        self.precision_list[0] += precision
+                    if query_level == "Int":
+                        self.precision_list[1] += precision
+                    if query_level == "Adv":
+                        self.precision_list[2] += precision
+
                     recall = num_relevant_retrieved / 3
                     
 
@@ -213,6 +250,7 @@ class RAG:
                             "num_relevant": 3,
                             "level_ranks": level_ranks,
                         },
+
                     }
 
                 results[title] = title_result
@@ -222,11 +260,18 @@ class RAG:
                     "model": self.llm,
                     "metric": self.type,
                     "k": 3,
+                    "Precision @ Ele": self.precision_list[0],
+                    "Precision @ Int": self.precision_list[1],
+                    "Precision @ Adv": self.precision_list[2],
+                    "Recall @ Ele": self.precision_list[0],
+                    "Recall @ Int": self.precision_list[1],
+                    "Recall @ Adv": self.precision_list[2],
                 },
                 "results": results,
             }
 
-            filename = f"results_{self.llm}_{self.type}.json"
+            filename = os.path.join(self.folder_name, f"results_{self.llm}_{self.type}.json")
+
             with open(filename, "w") as f:
                 json.dump(output, f, indent=4)
 
