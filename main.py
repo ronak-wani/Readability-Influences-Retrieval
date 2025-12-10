@@ -20,16 +20,23 @@ class RAG:
     tfidf = None
     search = None
     results = None
-    total_count_list = [0] * 3
-    Ele_Q_list = [0] * 3 # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
-    Int_Q_list = [0] * 3 # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
-    Adv_Q_list = [0] * 3 # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
 
     def __init__(self, type, llm):
         self.type = type
         self.llm = llm
         self.precision_list = [0] * 3
         self.recall_list = [0] * 3
+        self.Ele_Q_list = [[0, 0, 0],
+                           [0, 0, 0],
+                           [0, 0, 0]]  # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
+
+        self.Int_Q_list = [[0, 0, 0],
+                           [0, 0, 0],
+                           [0, 0, 0]] # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
+
+        self.Adv_Q_list = [[0, 0, 0],
+                           [0, 0, 0],
+                           [0, 0, 0]]  # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
         self.docs, self.ids = self.data_loader()
         self.retriever = self.vectordb()
         self.bm25 = BM25Retriever.from_documents(self.docs)
@@ -203,21 +210,27 @@ class RAG:
                                 "level": document.metadata.get("level"),
                                 "score": score,
                             })
-                        # if document.metadata.get("level") == "Ele":
-                        #     if document.metadata.get("title") == title:
-                        #         self.relevant_count_list[0] += rank+1
-                        #     else:
-                        #         self.irrelevant_count_list[2] +=1
-                        # elif document.metadata.get("level") == "Int":
-                        #     if document.metadata.get("title") == title:
-                        #         self.relevant_count_list[1] += rank+1
-                        #     else:
-                        #         self.irrelevant_count_list[2] +=1
-                        # elif document.metadata.get("level") == "Adv":
-                        #     if document.metadata.get("title") == title:
-                        #         self.relevant_count_list[2] += rank+1
-                        #     else:
-                        #         self.irrelevant_count_list[2] +=1
+                        if query_level == "Ele-Q":
+                            if document.metadata.get("level") == "Ele" and document.metadata.get("title") == title:
+                                self.Ele_Q_list[0][rank] += 1
+                            elif document.metadata.get("level") == "Int" and document.metadata.get("title") == title:
+                                self.Ele_Q_list[1][rank] += 1
+                            elif document.metadata.get("level") == "Adv" and document.metadata.get("title") == title:
+                                self.Ele_Q_list[2][rank] += 1
+                        elif query_level == "Int-Q":
+                            if document.metadata.get("level") == "Ele" and document.metadata.get("title") == title:
+                                self.Int_Q_list[0][rank] += 1
+                            elif document.metadata.get("level") == "Int" and document.metadata.get("title") == title:
+                                self.Int_Q_list[1][rank] += 1
+                            elif document.metadata.get("level") == "Int" and document.metadata.get("title") == title:
+                                self.Int_Q_list[2][rank] += 1
+                        elif query_level == "Int-Q":
+                            if document.metadata.get("level") == "Ele" and document.metadata.get("title") == title:
+                                self.Adv_Q_list[0][rank] += 1
+                            elif document.metadata.get("level") == "Int" and document.metadata.get("title") == title:
+                                self.Adv_Q_list[1][rank] += 1
+                            elif document.metadata.get("level") == "Adv" and document.metadata.get("title") == title:
+                                self.Adv_Q_list[2][rank] += 1
 
                     num_relevant_retrieved = 0
                         
@@ -267,6 +280,45 @@ class RAG:
                     "model": self.llm,
                     "metric": self.type,
                     "k": 3,
+                    "Ele-Q" : {
+                        "Count of relevant Ele doc at rank 1 ": self.Ele_Q_list[0][0],
+                        "Count of relevant Ele doc at rank 2 ": self.Ele_Q_list[0][1],
+                        "Count of relevant Ele doc at rank 3 ": self.Ele_Q_list[0][2],
+
+                        "Count of relevant Int doc at rank 1 ": self.Int_Q_list[0][0],
+                        "Count of relevant Int doc at rank 2 ": self.Int_Q_list[0][1],
+                        "Count of relevant Int doc at rank 3 ": self.Int_Q_list[0][2],
+
+                        "Count of relevant Adv doc at rank 1 ": self.Adv_Q_list[0][0],
+                        "Count of relevant Adv doc at rank 2 ": self.Adv_Q_list[0][1],
+                        "Count of relevant Adv doc at rank 3 ": self.Adv_Q_list[0][2],
+                    },
+                    "Int-Q": {
+                        "Count of relevant Ele doc at rank 1 ": self.Ele_Q_list[1][0],
+                        "Count of relevant Ele doc at rank 2 ": self.Ele_Q_list[1][1],
+                        "Count of relevant Ele doc at rank 3 ": self.Ele_Q_list[1][2],
+
+                        "Count of relevant Int doc at rank 1 ": self.Int_Q_list[1][0],
+                        "Count of relevant Int doc at rank 2 ": self.Int_Q_list[1][1],
+                        "Count of relevant Int doc at rank 3 ": self.Int_Q_list[1][2],
+
+                        "Count of relevant Adv doc at rank 1 ": self.Adv_Q_list[1][0],
+                        "Count of relevant Adv doc at rank 2 ": self.Adv_Q_list[1][1],
+                        "Count of relevant Adv doc at rank 3 ": self.Adv_Q_list[1][2],
+                    },
+                    "Adv-Q": {
+                        "Count of relevant Ele doc at rank 1 ": self.Ele_Q_list[2][0],
+                        "Count of relevant Ele doc at rank 2 ": self.Ele_Q_list[2][1],
+                        "Count of relevant Ele doc at rank 3 ": self.Ele_Q_list[2][2],
+
+                        "Count of relevant Int doc at rank 1 ": self.Int_Q_list[2][0],
+                        "Count of relevant Int doc at rank 2 ": self.Int_Q_list[2][1],
+                        "Count of relevant Int doc at rank 3 ": self.Int_Q_list[2][2],
+
+                        "Count of relevant Adv doc at rank 1 ": self.Adv_Q_list[2][0],
+                        "Count of relevant Adv doc at rank 2 ": self.Adv_Q_list[2][1],
+                        "Count of relevant Adv doc at rank 3 ": self.Adv_Q_list[2][2],
+                    },
                     "Precision @ Ele": f"{(self.precision_list[0]/189):.2f}",
                     "Precision @ Int": f"{(self.precision_list[1]/189):.2f}",
                     "Precision @ Adv": f"{(self.precision_list[2]/189):.2f}",
