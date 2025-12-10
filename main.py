@@ -187,9 +187,7 @@ class RAG:
                             a = query_vector
                             b = embeddings
                             a_norm = a / (np.linalg.norm(a))
-                            print(f"a_norm : {a_norm}")
                             b_norm = b / (np.linalg.norm(b, axis=1, keepdims=True))
-                            print(f"b_norm : {b_norm}")
                             similarities = np.dot(b_norm, a_norm)
                             order = np.argsort(-similarities)[:3]
                             retrieved_docs = [(self.docs[int(i)], float(similarities[i])) for i in order]
@@ -237,9 +235,6 @@ class RAG:
                     for document in top_k_docs:
                         if document.get("title") == title:
                             num_relevant_retrieved += 1
-                            print(f"Inside Loop {num_relevant_retrieved}")
-
-                    print(f"Outside Loop {num_relevant_retrieved}")
 
                     precision = num_relevant_retrieved / 3
 
