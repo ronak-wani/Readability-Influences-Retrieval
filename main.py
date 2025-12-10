@@ -199,21 +199,21 @@ class RAG:
                                 "level": document.metadata.get("level"),
                                 "score": score,
                             })
-                        if document.metadata.get("level") == "Ele":
-                            if document.metadata.get("title") == title:
-                                self.relevant_count_list[0] += rank+1
-                            else:
-                                self.irrelevant_count_list[2] +=1
-                        elif document.metadata.get("level") == "Int":
-                            if document.metadata.get("title") == title:
-                                self.relevant_count_list[1] += rank+1
-                            else:
-                                self.irrelevant_count_list[2] +=1
-                        elif document.metadata.get("level") == "Adv":
-                            if document.metadata.get("title") == title:
-                                self.relevant_count_list[2] += rank+1
-                            else:
-                                self.irrelevant_count_list[2] +=1
+                        # if document.metadata.get("level") == "Ele":
+                        #     if document.metadata.get("title") == title:
+                        #         self.relevant_count_list[0] += rank+1
+                        #     else:
+                        #         self.irrelevant_count_list[2] +=1
+                        # elif document.metadata.get("level") == "Int":
+                        #     if document.metadata.get("title") == title:
+                        #         self.relevant_count_list[1] += rank+1
+                        #     else:
+                        #         self.irrelevant_count_list[2] +=1
+                        # elif document.metadata.get("level") == "Adv":
+                        #     if document.metadata.get("title") == title:
+                        #         self.relevant_count_list[2] += rank+1
+                        #     else:
+                        #         self.irrelevant_count_list[2] +=1
 
                     num_relevant_retrieved = 0
                         
