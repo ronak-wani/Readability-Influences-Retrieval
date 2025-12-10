@@ -20,8 +20,10 @@ class RAG:
     tfidf = None
     search = None
     results = None
-    relevant_count_list = [0] * 3  # ["Ele", "Int", "Adv"]
     total_count_list = [0] * 3
+    Ele_Q_list = [0] * 3 # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
+    Int_Q_list = [0] * 3 # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
+    Adv_Q_list = [0] * 3 # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
 
     def __init__(self, type, llm):
         self.type = type
@@ -283,7 +285,7 @@ class RAG:
             return output
 
 if __name__=="__main__":
-    models = ["snowflake-arctic-embed", "nomic-embed-text"]
+    models = ["snowflake-arctic-embed", "nomic-embed-text", "granite-embedding", "embeddinggemma"]
     types = ["cosine", "euclidean", "dot_product", "bm25", "tfidf"]
     for m in models:
         for t in types:
