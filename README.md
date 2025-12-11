@@ -60,3 +60,8 @@ Run the program from the main.py
 ```
 It will create a ChromaDB folder, which is a persistent vector database instance containing the vector embeddings. 
 It will also create a folder for each model, with each folder containing the results for BM25, TF-IDF, Cosine, Dot Product, and Euclidean Distance.
+
+
+
+
+For the notebook files generated_readability and generate answers. These can be added to a Python notebook, or Colab can be used, which is what we used. Make sure to pip install the imports. For the generated answers, depending on the computer power available, this can take a long time as we used an LLM with 27b parameters. A smaller ollam model can be used, or we recommend using our generated answers file. Using this file you can test out the generated readability.
