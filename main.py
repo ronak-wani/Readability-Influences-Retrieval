@@ -334,9 +334,9 @@ class RAG:
             return output
 
 if __name__=="__main__":
-    models = ["snowflake-arctic-embed2"]
-    # models = ["snowflake-arctic-embed", "snowflake-arctic-embed2", "nomic-embed-text", "granite-embedding",
-    #           "embeddinggemma", "qwen3-embedding"]
+    # models = ["snowflake-arctic-embed2"]
+    models = ["snowflake-arctic-embed", "nomic-embed-text", "granite-embedding",
+              "embeddinggemma", "qwen3-embedding"]
     types = ["cosine", "euclidean", "dot_product", "bm25", "tfidf"]
     for m in models:
         for t in types:
