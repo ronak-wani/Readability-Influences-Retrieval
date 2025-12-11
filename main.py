@@ -1,14 +1,12 @@
-
 import json
 import numpy as np
-from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.runnables import RunnablePassthrough
 from tqdm import tqdm
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import JSONLoader
 from langchain_ollama import OllamaEmbeddings
 from langchain_community.retrievers import BM25Retriever, TFIDFRetriever
+import os
 
 TOP_K = 3
 
@@ -26,14 +24,38 @@ class RAG:
     def __init__(self, type, llm):
         self.type = type
         self.llm = llm
+        self.r_precision_list = [0] * 3
+        self.Ele_Q_list = [[0, 0, 0],
+                           [0, 0, 0],
+                           [0, 0, 0]]  # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
+
+        self.Int_Q_list = [[0, 0, 0],
+                           [0, 0, 0],
+                           [0, 0, 0]] # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
+
+        self.Adv_Q_list = [[0, 0, 0],
+                           [0, 0, 0],
+                           [0, 0, 0]]  # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
         self.docs, self.ids = self.data_loader()
         self.retriever = self.vectordb()
         self.bm25 = BM25Retriever.from_documents(self.docs)
         self.bm25.k = TOP_K
         self.tfidf = TFIDFRetriever.from_documents(self.docs)
         self.tfidf.k = TOP_K
+        self.folder_name = self.create_output_folder()
         self.semantic_search()
         self.results = self.evaluation()
+
+    def create_output_folder(self):
+        folder_name = f"{self.llm}"
+
+        if not os.path.exists(folder_name):
+            os.makedirs(folder_name)
+            print(f"Created output folder: {folder_name}")
+        else:
+            print(f"Output folder already exists: {folder_name}")
+
+        return folder_name
 
     def data_loader(self):
         ids=[]
@@ -65,7 +87,11 @@ class RAG:
     def vectordb(self):
         vectorstore = Chroma(
             collection_name="readability-rag-" + self.llm,
-            embedding_function=OllamaEmbeddings(model=self.llm, base_url="http://localhost:11434"),
+            embedding_function = OllamaEmbeddings(
+                model=self.llm,
+                base_url="http://localhost:11434",
+                num_ctx=512,
+            ),
             persist_directory="./chroma_db_" + self.llm.replace("-", "_"),
         )
         self.vectorstore = vectorstore
@@ -124,15 +150,6 @@ class RAG:
 
             print()
 
-            # after_rag_chain = (
-            #         {"context": self.retriever, "question": RunnablePassthrough()}
-            #         | rag_prompt
-            #         | self.llm
-            #         | StrOutputParser()
-            # )
-            # response = after_rag_chain.invoke({"question": question})
-
-            # responses.append(response)
             return responses
 
     
@@ -152,7 +169,7 @@ class RAG:
             for title, questions in tqdm(questions.items(), desc=f"Testing {self.type}"):
                 
                 title_result = {}
-                
+                retrieved_docs=[]
 
                 for query_level, question in questions.items():
                     if self.type == "bm25":
@@ -160,8 +177,8 @@ class RAG:
                         retrieved_docs = [(d, 0.0) for d in docs]
 
                     elif self.type == "tfidf":
-                        docs = self.bm25.invoke(question)[:3]
-                        retrieved_docs = [(d, 0.0) for d in docs] # tuple made even though i don't need a score.
+                        docs = self.tfidf.invoke(question)[:3]
+                        retrieved_docs = [(d, 0.0) for d in docs]
 
                     else:
                         query_vector = np.array(self.vectorstore._embedding_function.embed_query(question))
@@ -170,13 +187,13 @@ class RAG:
                             b = embeddings
                             a_norm = a / (np.linalg.norm(a))
                             b_norm = b / (np.linalg.norm(b, axis=1, keepdims=True))
-                            simularities = np.dot(b_norm, a_norm)
-                            order = np.argsort(-simularities)[:3]
-                            retrieved_docs = [(self.docs[int(i)], float(simularities[i])) for i in order]
+                            similarities = np.dot(b_norm, a_norm)
+                            order = np.argsort(-similarities)[:3]
+                            retrieved_docs = [(self.docs[int(i)], float(similarities[i])) for i in order]
                         elif self.type == "dot_product":
-                            simularities = embeddings @ query_vector
-                            order = np.argsort(-simularities)[:3]
-                            retrieved_docs = [(self.docs[int(i)], float(simularities[i])) for i in order]
+                            similarities = embeddings @ query_vector
+                            order = np.argsort(-similarities)[:3]
+                            retrieved_docs = [(self.docs[int(i)], float(similarities[i])) for i in order]
                         elif self.type == "euclidean":
                             distances = np.linalg.norm(embeddings - query_vector, axis=1)
                             order = np.argsort(distances)[:3]
@@ -190,26 +207,48 @@ class RAG:
                                 "level": document.metadata.get("level"),
                                 "score": score,
                             })
-                        
+                        if query_level == "Ele-Q":
+                            if document.metadata.get("level") == "Ele" and document.metadata.get("title") == title:
+                                self.Ele_Q_list[0][rank] += 1
+                            elif document.metadata.get("level") == "Int" and document.metadata.get("title") == title:
+                                self.Ele_Q_list[1][rank] += 1
+                            elif document.metadata.get("level") == "Adv" and document.metadata.get("title") == title:
+                                self.Ele_Q_list[2][rank] += 1
+                        elif query_level == "Int-Q":
+                            if document.metadata.get("level") == "Ele" and document.metadata.get("title") == title:
+                                self.Int_Q_list[0][rank] += 1
+                            elif document.metadata.get("level") == "Int" and document.metadata.get("title") == title:
+                                self.Int_Q_list[1][rank] += 1
+                            elif document.metadata.get("level") == "Adv" and document.metadata.get("title") == title:
+                                self.Int_Q_list[2][rank] += 1
+                        elif query_level == "Adv-Q":
+                            if document.metadata.get("level") == "Ele" and document.metadata.get("title") == title:
+                                self.Adv_Q_list[0][rank] += 1
+                            elif document.metadata.get("level") == "Int" and document.metadata.get("title") == title:
+                                self.Adv_Q_list[1][rank] += 1
+                            elif document.metadata.get("level") == "Adv" and document.metadata.get("title") == title:
+                                self.Adv_Q_list[2][rank] += 1
 
                     num_relevant_retrieved = 0
                         
                     for document in top_k_docs:
-                        if(document.get("title") == title):
+                        if document.get("title") == title:
                             num_relevant_retrieved += 1
 
+                    r_precision = num_relevant_retrieved / 3
 
-                    
-                    precision = num_relevant_retrieved / 3
-                
-                    recall = num_relevant_retrieved / 3
-                    
+                    if query_level == "Ele-Q":
+                        self.r_precision_list[0] += r_precision
+                    if query_level == "Int-Q":
+                        self.r_precision_list[1] += r_precision
+                    if query_level == "Adv-Q":
+                        self.r_precision_list[2] += r_precision
 
                     level_ranks = {"Adv": None, "Int": None, "Ele": None}
                     for rank, document in enumerate(top_k_docs):
                         if document.get("title") == title:
                             lvl = document.get("level")
-                            level_ranks[lvl] = rank+1
+                            level_ranks[lvl] = rank + 1
 
                     title_result[query_level] = {
                         "question": question,
@@ -217,11 +256,11 @@ class RAG:
                         "query_level": query_level,
                         "top_k_docs": top_k_docs,
                         "metrics": {
-                            "precision_at_k=3": precision,
-                            "recall_at_k=3": recall,
+                            "R-precision_at_k=3": r_precision,
                             "num_relevant": 3,
                             "level_ranks": level_ranks,
                         },
+
                     }
 
                 results[title] = title_result
@@ -231,22 +270,73 @@ class RAG:
                     "model": self.llm,
                     "metric": self.type,
                     "k": 3,
+                    "Ele-Q" : {
+                        "Count of relevant Ele doc at rank 1 ": self.Ele_Q_list[0][0],
+                        "Count of relevant Ele doc at rank 2 ": self.Ele_Q_list[0][1],
+                        "Count of relevant Ele doc at rank 3 ": self.Ele_Q_list[0][2],
+                        "Weighted Rank Score For Ele Doc": f"{((self.Ele_Q_list[0][0]*3) + (self.Ele_Q_list[0][1]*2) + (self.Ele_Q_list[0][2]*1))/(189 * 3):.4f}",
+
+                        "Count of relevant Int doc at rank 1 ": self.Ele_Q_list[1][0],
+                        "Count of relevant Int doc at rank 2 ": self.Ele_Q_list[1][1],
+                        "Count of relevant Int doc at rank 3 ": self.Ele_Q_list[1][2],
+                        "Weighted Rank Score For Int Doc": f"{((self.Ele_Q_list[1][0] * 3) + (self.Ele_Q_list[1][1] * 2) + (self.Ele_Q_list[1][2] * 1)) / (189 * 3):.4f}",
+
+                        "Count of relevant Adv doc at rank 1 ": self.Ele_Q_list[2][0],
+                        "Count of relevant Adv doc at rank 2 ": self.Ele_Q_list[2][1],
+                        "Count of relevant Adv doc at rank 3 ": self.Ele_Q_list[2][2],
+                        "Weighted Rank Score For Adv Doc": f"{((self.Ele_Q_list[2][0] * 3) + (self.Ele_Q_list[2][1] * 2) + (self.Ele_Q_list[2][2] * 1)) / (189 * 3):.4f}",
+                    },
+                    "Int-Q": {
+                        "Count of relevant Ele doc at rank 1 ": self.Int_Q_list[0][0],
+                        "Count of relevant Ele doc at rank 2 ": self.Int_Q_list[0][1],
+                        "Count of relevant Ele doc at rank 3 ": self.Int_Q_list[0][2],
+                        "Weighted Rank Score For Ele Doc": f"{((self.Int_Q_list[0][0]*3) + (self.Int_Q_list[0][1]*2) + (self.Int_Q_list[0][2]*1))/(189 * 3):.4f}",
+
+                        "Count of relevant Int doc at rank 1 ": self.Int_Q_list[1][0],
+                        "Count of relevant Int doc at rank 2 ": self.Int_Q_list[1][1],
+                        "Count of relevant Int doc at rank 3 ": self.Int_Q_list[1][2],
+                        "Weighted Rank Score For Int Doc": f"{((self.Int_Q_list[1][0] * 3) + (self.Int_Q_list[1][1] * 2) + (self.Int_Q_list[1][2] * 1)) / (189 * 3):.4f}",
+
+                        "Count of relevant Adv doc at rank 1 ": self.Int_Q_list[2][0],
+                        "Count of relevant Adv doc at rank 2 ": self.Int_Q_list[2][1],
+                        "Count of relevant Adv doc at rank 3 ": self.Int_Q_list[2][2],
+                        "Weighted Rank Score For Adv Doc": f"{((self.Int_Q_list[2][0] * 3) + (self.Int_Q_list[2][1] * 2) + (self.Int_Q_list[2][2] * 1)) / (189 * 3):.4f}",
+                    },
+                    "Adv-Q": {
+                        "Count of relevant Ele doc at rank 1 ": self.Adv_Q_list[0][0],
+                        "Count of relevant Ele doc at rank 2 ": self.Adv_Q_list[0][1],
+                        "Count of relevant Ele doc at rank 3 ": self.Adv_Q_list[0][2],
+                        "Weighted Rank Score For Ele Doc": f"{((self.Adv_Q_list[0][0]*3) + (self.Adv_Q_list[0][1]*2) + (self.Adv_Q_list[0][2]*1))/(189*3):.4f}",
+
+                        "Count of relevant Int doc at rank 1 ": self.Adv_Q_list[1][0],
+                        "Count of relevant Int doc at rank 2 ": self.Adv_Q_list[1][1],
+                        "Count of relevant Int doc at rank 3 ": self.Adv_Q_list[1][2],
+                        "Weighted Rank Score For Int Doc": f"{((self.Adv_Q_list[1][0] * 3) + (self.Adv_Q_list[1][1] * 2) + (self.Adv_Q_list[1][2] * 1)) / (189 * 3):.4f}",
+
+                        "Count of relevant Adv doc at rank 1 ": self.Adv_Q_list[2][0],
+                        "Count of relevant Adv doc at rank 2 ": self.Adv_Q_list[2][1],
+                        "Count of relevant Adv doc at rank 3 ": self.Adv_Q_list[2][2],
+                        "Weighted Rank Score For Adv Doc": f"{((self.Adv_Q_list[2][0] * 3) + (self.Adv_Q_list[2][1] * 2) + (self.Adv_Q_list[2][2] * 1)) / (189 * 3):.4f}",
+                    },
+
+                    "R-Precision @ Ele": f"{(self.r_precision_list[0]/189):.2f}",
+                    "R-Precision @ Int": f"{(self.r_precision_list[1]/189):.2f}",
+                    "R-Precision @ Adv": f"{(self.r_precision_list[2]/189):.2f}",
                 },
                 "results": results,
             }
 
-            filename = f"results_snowflake_arctic_embed_{self.type}.json"
+            filename = os.path.join(self.folder_name, f"results_{self.llm}_{self.type}.json")
+
             with open(filename, "w") as f:
                 json.dump(output, f, indent=4)
 
             return output
 
-
-
-
-
 if __name__=="__main__":
-    models = ["snowflake-arctic-embed"]
+    # models = ["snowflake-arctic-embed2"]
+    models = ["snowflake-arctic-embed", "nomic-embed-text", "granite-embedding",
+              "embeddinggemma", "qwen3-embedding"]
     types = ["cosine", "euclidean", "dot_product", "bm25", "tfidf"]
     for m in models:
         for t in types:
