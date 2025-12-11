@@ -1,1 +1,145 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Readability Influences Retrieval</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; line-height: 1.5; }
+    header { background: #111; color: white; display: flex; align-items: center; padding: 0 20px; height: 60px; }
+    header .logo { display: flex; align-items: center; flex: 1; }
+    header .logo span { margin-left: 10px; font-weight: bold; }
+    header nav a { color: white; text-decoration: none; margin-left: 20px; }
+
+    .hero {
+      position: relative;
+      color: black;
+      text-align: center;
+      padding: 120px 20px;
+      background: url("hero-image.jpg") center/cover no-repeat;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.05);
+    }
+    .hero-content {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero h1 { margin-bottom: 10px; }
+    .hero p { font-style: italic; }
+
+    main { max-width: 1100px; margin: 40px auto; padding: 0 20px 60px; }
+
+    section { margin-bottom: 60px; }
+    section h2 { text-align: center; margin-bottom: 20px; text-decoration: underline; }
+
+    footer {
+      border-top: 1px solid #ddd;
+      padding: 20px;
+      font-size: 14px;
+      text-align: center;
+    }
+    footer a { color: #b30000; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span>Readability Influences Retrieval</span>
+    </div>
+    <nav>
+      <a href="#">Home</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="content">
+      <h1>Readability Influences Retrieval</h1>
+      <p>An Investigation on Influence of Readability Levels on RAG Systems</p>
+    </div>
+  </section>
+
+  <main>
+    <section id="description">
+      <h2>Objective and Goal of the project</h2>
+      <p>
+        To investigate the influence of readability level of document corpus on Retrieval augmented generation (RAG).
+      </p>
+      <p>
+        Explore the average ranking of retrieved documents based on linguistic complexity
+      </p>
+	  <p>
+        Documents share the same context but differ in sentence structure, and vocabulary
+      </p>
+	  <p>
+        Explore how the generation from these documents are affected
+      </p>
+    </section>
+
+    <section id="overview">
+      <h2>System Overview</h2>
+      <div class="two-column">
+        <div class="card">
+          <img src="\Readability-Influences-Retrieval\assets\Methodology.png" style="width:100%; height:auto;">
+        </div>
+        <div>
+          <ul>
+            <li>Step 1: We have documents with different levels of linguistic complexity, i.e., elemantary, intermediate and advance. These documents are embedded using embedding models, which makes them as vector representations that a model can search through.</li>
+            <li>Step 2: Then, we pass a query, the system retrieves and ranks some of these documents as most relevant. It ranks the documents of a particular complexity level like advance text is ranked higher than others, even if all are relevant.</li>
+			<li>Step 3: The top‑ranked documents are passed into a generation model that uses them to produce an output, like a summary and to check whether the ranking bias has any impact on the output.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Evaluation and Results</h2>
+	  
+	  <div class="card">
+        <img src="\Readability-Influences-Retrieval\assets\Results11.png" style="width:100%; height:auto;">
+      </div>
+	  
+	  <div class="card">
+        <img src="\Readability-Influences-Retrieval\assets\Results12.png" style="width:100%; height:auto;">
+      </div>
+	  
+	  <div class="card">
+		<p><b>Average Readability Index Matrix</b></p>
+        <img src="\Readability-Influences-Retrieval\assets\Results13.png" style="width:100%; height:auto;">
+      </div>
+	  
+      <div class="card">
+		<p><b>Average Readability Index Matrix</b></p>
+        <img src="\Readability-Influences-Retrieval\assets\Results14.png" style="width:100%; height:auto;">
+      </div>
+
+    </section>
+
+    <section id="conclusion">
+      <h2>Conclusion</h2>
+      <ul>
+        <li>For dense embeddings, we saw that the Intermediate Level document had a weighted rank score higher than the Elementary Level Document and the Advanced Level Document.</li>
+        <li>We also saw that that the sparse vector models preferred the Elementary Level Documents.</li>
+        <li>The readability of the document also influences the readability of the generated responses.</li>
+        <p>Overall, It can be determined that the Readability of the Document Corpus can influence the RAG pipeline in both retrieval and generation​</p>
+      </ul>
+      <p>
+        <strong>GitHub:</strong> <a href="https://github.com/ronak-wani/Readability-Influences-Retrieval">Project Repository</a><br>
+        <strong>Dataset:</strong> <a href="https://github.com/nishkalavallabhi/OneStopEnglishCorpus/blob/master/Texts-Together-OneCSVperFile/Banksy.csv">One Stop English Corpus</a>
+      </p>
+      <p>Authors: Ronak Wani, Matthew Kiszla, Shreelaxmi Malawade, Glenn D'souza</p>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2025 Readability Influences Retrieval Project
+  </footer>
+
+</body>
+</html>
+
