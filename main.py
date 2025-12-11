@@ -279,41 +279,51 @@ class RAG:
                         "Count of relevant Ele doc at rank 1 ": self.Ele_Q_list[0][0],
                         "Count of relevant Ele doc at rank 2 ": self.Ele_Q_list[0][1],
                         "Count of relevant Ele doc at rank 3 ": self.Ele_Q_list[0][2],
+                        "Weighted Rank Score For Ele Doc": ((self.Ele_Q_list[0][0]*3) + (self.Ele_Q_list[0][1]*2) + (self.Ele_Q_list[0][2]*1))/(189 * 3),
 
                         "Count of relevant Int doc at rank 1 ": self.Int_Q_list[0][0],
                         "Count of relevant Int doc at rank 2 ": self.Int_Q_list[0][1],
                         "Count of relevant Int doc at rank 3 ": self.Int_Q_list[0][2],
+                        "Weighted Rank Score For Int Doc": ((self.Int_Q_list[0][0] * 3) + (self.Int_Q_list[0][1] * 2) + (self.Int_Q_list[0][2] * 1)) / (189 * 3),
 
                         "Count of relevant Adv doc at rank 1 ": self.Adv_Q_list[0][0],
                         "Count of relevant Adv doc at rank 2 ": self.Adv_Q_list[0][1],
                         "Count of relevant Adv doc at rank 3 ": self.Adv_Q_list[0][2],
+                        "Weighted Rank Score For Adv Doc": ((self.Adv_Q_list[0][0] * 3) + (self.Adv_Q_list[0][1] * 2) + (self.Adv_Q_list[0][2] * 1)) / (189 * 3),
                     },
                     "Int-Q": {
                         "Count of relevant Ele doc at rank 1 ": self.Ele_Q_list[1][0],
                         "Count of relevant Ele doc at rank 2 ": self.Ele_Q_list[1][1],
                         "Count of relevant Ele doc at rank 3 ": self.Ele_Q_list[1][2],
+                        "Weighted Rank Score For Ele Doc": ((self.Ele_Q_list[1][0]*3) + (self.Ele_Q_list[1][1]*2) + (self.Ele_Q_list[1][2]*1))/(189 * 3),
 
                         "Count of relevant Int doc at rank 1 ": self.Int_Q_list[1][0],
                         "Count of relevant Int doc at rank 2 ": self.Int_Q_list[1][1],
                         "Count of relevant Int doc at rank 3 ": self.Int_Q_list[1][2],
+                        "Weighted Rank Score For Int Doc": ((self.Int_Q_list[1][0] * 3) + (self.Int_Q_list[1][1] * 2) + (self.Int_Q_list[1][2] * 1)) / (189 * 3),
 
                         "Count of relevant Adv doc at rank 1 ": self.Adv_Q_list[1][0],
                         "Count of relevant Adv doc at rank 2 ": self.Adv_Q_list[1][1],
                         "Count of relevant Adv doc at rank 3 ": self.Adv_Q_list[1][2],
+                        "Weighted Rank Score For Adv Doc": ((self.Adv_Q_list[1][0] * 3) + (self.Adv_Q_list[1][1] * 2) + (self.Adv_Q_list[2][2] * 1)) / (189 * 3),
                     },
                     "Adv-Q": {
                         "Count of relevant Ele doc at rank 1 ": self.Ele_Q_list[2][0],
                         "Count of relevant Ele doc at rank 2 ": self.Ele_Q_list[2][1],
                         "Count of relevant Ele doc at rank 3 ": self.Ele_Q_list[2][2],
+                        "Weighted Rank Score For Ele Doc": ((self.Ele_Q_list[2][0]*3) + (self.Ele_Q_list[2][1]*2) + (self.Ele_Q_list[2][2]*1))/(189*3),
 
                         "Count of relevant Int doc at rank 1 ": self.Int_Q_list[2][0],
                         "Count of relevant Int doc at rank 2 ": self.Int_Q_list[2][1],
                         "Count of relevant Int doc at rank 3 ": self.Int_Q_list[2][2],
+                        "Weighted Rank Score For Int Doc": ((self.Int_Q_list[2][0] * 3) + (self.Int_Q_list[2][1] * 2) + (self.Int_Q_list[2][2] * 1)) / (189 * 3),
 
                         "Count of relevant Adv doc at rank 1 ": self.Adv_Q_list[2][0],
                         "Count of relevant Adv doc at rank 2 ": self.Adv_Q_list[2][1],
                         "Count of relevant Adv doc at rank 3 ": self.Adv_Q_list[2][2],
+                        "Weighted Rank Score For Adv Doc": ((self.Adv_Q_list[2][0] * 3) + (self.Adv_Q_list[2][1] * 2) + (self.Adv_Q_list[2][2] * 1)) / (189 * 3),
                     },
+
                     "Precision @ Ele": f"{(self.precision_list[0]/189):.2f}",
                     "Precision @ Int": f"{(self.precision_list[1]/189):.2f}",
                     "Precision @ Adv": f"{(self.precision_list[2]/189):.2f}",
@@ -332,7 +342,8 @@ class RAG:
             return output
 
 if __name__=="__main__":
-    models = ["snowflake-arctic-embed", "nomic-embed-text", "granite-embedding", "embeddinggemma"]
+    models = ["snowflake-arctic-embed", "snowflake-arctic-embed2", "nomic-embed-text", "granite-embedding",
+              "embeddinggemma", "qwen3-embedding"]
     types = ["cosine", "euclidean", "dot_product", "bm25", "tfidf"]
     for m in models:
         for t in types:
