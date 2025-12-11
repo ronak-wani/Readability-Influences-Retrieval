@@ -24,8 +24,7 @@ class RAG:
     def __init__(self, type, llm):
         self.type = type
         self.llm = llm
-        self.precision_list = [0] * 3
-        self.recall_list = [0] * 3
+        self.r_precision_list = [0] * 3
         self.Ele_Q_list = [[0, 0, 0],
                            [0, 0, 0],
                            [0, 0, 0]]  # ["Ele_Doc_Rank", "Int_Doc_Rank", "Adv_Doc_Rank"]
@@ -236,17 +235,14 @@ class RAG:
                         if document.get("title") == title:
                             num_relevant_retrieved += 1
 
-                    precision = num_relevant_retrieved / 3
+                    r_precision = num_relevant_retrieved / 3
 
                     if query_level == "Ele-Q":
-                        self.precision_list[0] += precision
+                        self.r_precision_list[0] += r_precision
                     if query_level == "Int-Q":
-                        self.precision_list[1] += precision
+                        self.r_precision_list[1] += r_precision
                     if query_level == "Adv-Q":
-                        self.precision_list[2] += precision
-
-                    recall = num_relevant_retrieved / 3
-                    
+                        self.r_precision_list[2] += r_precision
 
                     level_ranks = {"Adv": None, "Int": None, "Ele": None}
                     for rank, document in enumerate(top_k_docs):
@@ -260,8 +256,7 @@ class RAG:
                         "query_level": query_level,
                         "top_k_docs": top_k_docs,
                         "metrics": {
-                            "precision_at_k=3": precision,
-                            "recall_at_k=3": recall,
+                            "R-precision_at_k=3": r_precision,
                             "num_relevant": 3,
                             "level_ranks": level_ranks,
                         },
@@ -279,57 +274,54 @@ class RAG:
                         "Count of relevant Ele doc at rank 1 ": self.Ele_Q_list[0][0],
                         "Count of relevant Ele doc at rank 2 ": self.Ele_Q_list[0][1],
                         "Count of relevant Ele doc at rank 3 ": self.Ele_Q_list[0][2],
-                        "Weighted Rank Score For Ele Doc": ((self.Ele_Q_list[0][0]*3) + (self.Ele_Q_list[0][1]*2) + (self.Ele_Q_list[0][2]*1))/(189 * 3),
+                        "Weighted Rank Score For Ele Doc": f"{((self.Ele_Q_list[0][0]*3) + (self.Ele_Q_list[0][1]*2) + (self.Ele_Q_list[0][2]*1))/(189 * 3):.4f}",
 
                         "Count of relevant Int doc at rank 1 ": self.Int_Q_list[0][0],
                         "Count of relevant Int doc at rank 2 ": self.Int_Q_list[0][1],
                         "Count of relevant Int doc at rank 3 ": self.Int_Q_list[0][2],
-                        "Weighted Rank Score For Int Doc": ((self.Int_Q_list[0][0] * 3) + (self.Int_Q_list[0][1] * 2) + (self.Int_Q_list[0][2] * 1)) / (189 * 3),
+                        "Weighted Rank Score For Int Doc": f"{((self.Int_Q_list[0][0] * 3) + (self.Int_Q_list[0][1] * 2) + (self.Int_Q_list[0][2] * 1)) / (189 * 3):.4f}",
 
                         "Count of relevant Adv doc at rank 1 ": self.Adv_Q_list[0][0],
                         "Count of relevant Adv doc at rank 2 ": self.Adv_Q_list[0][1],
                         "Count of relevant Adv doc at rank 3 ": self.Adv_Q_list[0][2],
-                        "Weighted Rank Score For Adv Doc": ((self.Adv_Q_list[0][0] * 3) + (self.Adv_Q_list[0][1] * 2) + (self.Adv_Q_list[0][2] * 1)) / (189 * 3),
+                        "Weighted Rank Score For Adv Doc": f"{((self.Adv_Q_list[0][0] * 3) + (self.Adv_Q_list[0][1] * 2) + (self.Adv_Q_list[0][2] * 1)) / (189 * 3):.4f}",
                     },
                     "Int-Q": {
                         "Count of relevant Ele doc at rank 1 ": self.Ele_Q_list[1][0],
                         "Count of relevant Ele doc at rank 2 ": self.Ele_Q_list[1][1],
                         "Count of relevant Ele doc at rank 3 ": self.Ele_Q_list[1][2],
-                        "Weighted Rank Score For Ele Doc": ((self.Ele_Q_list[1][0]*3) + (self.Ele_Q_list[1][1]*2) + (self.Ele_Q_list[1][2]*1))/(189 * 3),
+                        "Weighted Rank Score For Ele Doc": f"{((self.Ele_Q_list[1][0]*3) + (self.Ele_Q_list[1][1]*2) + (self.Ele_Q_list[1][2]*1))/(189 * 3):.4f}",
 
                         "Count of relevant Int doc at rank 1 ": self.Int_Q_list[1][0],
                         "Count of relevant Int doc at rank 2 ": self.Int_Q_list[1][1],
                         "Count of relevant Int doc at rank 3 ": self.Int_Q_list[1][2],
-                        "Weighted Rank Score For Int Doc": ((self.Int_Q_list[1][0] * 3) + (self.Int_Q_list[1][1] * 2) + (self.Int_Q_list[1][2] * 1)) / (189 * 3),
+                        "Weighted Rank Score For Int Doc": f"{((self.Int_Q_list[1][0] * 3) + (self.Int_Q_list[1][1] * 2) + (self.Int_Q_list[1][2] * 1)) / (189 * 3):.4f}",
 
                         "Count of relevant Adv doc at rank 1 ": self.Adv_Q_list[1][0],
                         "Count of relevant Adv doc at rank 2 ": self.Adv_Q_list[1][1],
                         "Count of relevant Adv doc at rank 3 ": self.Adv_Q_list[1][2],
-                        "Weighted Rank Score For Adv Doc": ((self.Adv_Q_list[1][0] * 3) + (self.Adv_Q_list[1][1] * 2) + (self.Adv_Q_list[2][2] * 1)) / (189 * 3),
+                        "Weighted Rank Score For Adv Doc": f"{((self.Adv_Q_list[1][0] * 3) + (self.Adv_Q_list[1][1] * 2) + (self.Adv_Q_list[2][2] * 1)) / (189 * 3):.4f}",
                     },
                     "Adv-Q": {
                         "Count of relevant Ele doc at rank 1 ": self.Ele_Q_list[2][0],
                         "Count of relevant Ele doc at rank 2 ": self.Ele_Q_list[2][1],
                         "Count of relevant Ele doc at rank 3 ": self.Ele_Q_list[2][2],
-                        "Weighted Rank Score For Ele Doc": ((self.Ele_Q_list[2][0]*3) + (self.Ele_Q_list[2][1]*2) + (self.Ele_Q_list[2][2]*1))/(189*3),
+                        "Weighted Rank Score For Ele Doc": f"{((self.Ele_Q_list[2][0]*3) + (self.Ele_Q_list[2][1]*2) + (self.Ele_Q_list[2][2]*1))/(189*3):.4f}",
 
                         "Count of relevant Int doc at rank 1 ": self.Int_Q_list[2][0],
                         "Count of relevant Int doc at rank 2 ": self.Int_Q_list[2][1],
                         "Count of relevant Int doc at rank 3 ": self.Int_Q_list[2][2],
-                        "Weighted Rank Score For Int Doc": ((self.Int_Q_list[2][0] * 3) + (self.Int_Q_list[2][1] * 2) + (self.Int_Q_list[2][2] * 1)) / (189 * 3),
+                        "Weighted Rank Score For Int Doc": f"{((self.Int_Q_list[2][0] * 3) + (self.Int_Q_list[2][1] * 2) + (self.Int_Q_list[2][2] * 1)) / (189 * 3):.4f}",
 
                         "Count of relevant Adv doc at rank 1 ": self.Adv_Q_list[2][0],
                         "Count of relevant Adv doc at rank 2 ": self.Adv_Q_list[2][1],
                         "Count of relevant Adv doc at rank 3 ": self.Adv_Q_list[2][2],
-                        "Weighted Rank Score For Adv Doc": ((self.Adv_Q_list[2][0] * 3) + (self.Adv_Q_list[2][1] * 2) + (self.Adv_Q_list[2][2] * 1)) / (189 * 3),
+                        "Weighted Rank Score For Adv Doc": f"{((self.Adv_Q_list[2][0] * 3) + (self.Adv_Q_list[2][1] * 2) + (self.Adv_Q_list[2][2] * 1)) / (189 * 3):.4f}",
                     },
 
-                    "Precision @ Ele": f"{(self.precision_list[0]/189):.2f}",
-                    "Precision @ Int": f"{(self.precision_list[1]/189):.2f}",
-                    "Precision @ Adv": f"{(self.precision_list[2]/189):.2f}",
-                    "Recall @ Ele": f"{(self.precision_list[0]/189):.2f}",
-                    "Recall @ Int": f"{(self.precision_list[1]/189):.2f}",
-                    "Recall @ Adv": f"{(self.precision_list[2]/189):.2f}",
+                    "R-Precision @ Ele": f"{(self.r_precision_list[0]/189):.2f}",
+                    "R-Precision @ Int": f"{(self.r_precision_list[1]/189):.2f}",
+                    "R-Precision @ Adv": f"{(self.r_precision_list[2]/189):.2f}",
                 },
                 "results": results,
             }
