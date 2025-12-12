@@ -63,5 +63,22 @@ It will also create a folder for each model, with each folder containing the res
 
 
 
+For the notebook files generated_readability and generate answers. These can be added to a Python notebook, or Colab can be used, which is what we used. Make sure to pip install the imports. For the generated answers, depending on the computer power available, this can take a long time as we used an LLM with 27b parameters. A smaller ollam model can be used, or we recommend using our answers file. A generic online LLM could also be used. Using this file you can test out the generated readability.
 
-For the notebook files generated_readability and generate answers. These can be added to a Python notebook, or Colab can be used, which is what we used. Make sure to pip install the imports. For the generated answers, depending on the computer power available, this can take a long time as we used an LLM with 27b parameters. A smaller ollam model can be used, or we recommend using our generated answers file. Using this file you can test out the generated readability.
+
+
+
+Some helpful resources:
+
+https://github.com/nishkalavallabhi/OneStopEnglishCorpus 
+https://www.langchain.com/
+https://docs.langchain.com/oss/python/integrations/retrievers/bm25
+https://docs.langchain.com/oss/python/integrations/retrievers/tf_idf
+https://pypi.org/project/textstat/
+https://readable.com/readability/flesch-reading-ease-flesch-kincaid-grade-level/
+https://en.wikipedia.org/wiki/Automated_readability_index
+https://ollama.com/
+https://medium.com/@abonia/running-ollama-in-google-colab-free-tier-545609258453
+https://ollama.com/library/snowflake-arctic-embed2
+
+
