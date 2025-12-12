@@ -70,15 +70,15 @@ For the notebook files generated_readability and generate answers. These can be 
 
 Some helpful resources:
 
-https://github.com/nishkalavallabhi/OneStopEnglishCorpus 
-https://www.langchain.com/
-https://docs.langchain.com/oss/python/integrations/retrievers/bm25
-https://docs.langchain.com/oss/python/integrations/retrievers/tf_idf
-https://pypi.org/project/textstat/
-https://readable.com/readability/flesch-reading-ease-flesch-kincaid-grade-level/
-https://en.wikipedia.org/wiki/Automated_readability_index
-https://ollama.com/
-https://medium.com/@abonia/running-ollama-in-google-colab-free-tier-545609258453
-https://ollama.com/library/snowflake-arctic-embed2
+"https://github.com/nishkalavallabhi/OneStopEnglishCorpus"
+"https://www.langchain.com/"
+"https://docs.langchain.com/oss/python/integrations/retrievers/bm25"
+"https://docs.langchain.com/oss/python/integrations/retrievers/tf_idf"
+"https://pypi.org/project/textstat/"
+"https://readable.com/readability/flesch-reading-ease-flesch-kincaid-grade-level/"
+"https://en.wikipedia.org/wiki/Automated_readability_index"
+"https://ollama.com/"
+"https://medium.com/@abonia/running-ollama-in-google-colab-free-tier-545609258453"
+"https://ollama.com/library/snowflake-arctic-embed2"
 
 
