@@ -69,7 +69,7 @@ For the notebook files generated_readability and generate answers. These can be 
 
 
 Some helpful resources:
-
+```
 "https://github.com/nishkalavallabhi/OneStopEnglishCorpus"
 "https://www.langchain.com/"
 "https://docs.langchain.com/oss/python/integrations/retrievers/bm25"
